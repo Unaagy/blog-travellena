@@ -11,6 +11,9 @@
 </head>
 <body>
 
+	<a href="${pageContext.request.contextPath}/article/showList">All articles</a>
+	<br>
+
 	<h2>Five last articles</h2>
 	<hr>
 	<hr>

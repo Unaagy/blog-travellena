@@ -71,7 +71,7 @@ public class ArticleDaoImplTest implements ArticleDao {
 			a.setPublishDate(new Date(refDate.getTime() + timeDelta));
 			
 			id++;
-			timeDelta += timeDelta;
+			timeDelta = timeDelta * 2;
 		}
 
 	}
@@ -95,7 +95,7 @@ public class ArticleDaoImplTest implements ArticleDao {
 			lastFive = tempList.subList(0, 5);
 			
 		} else {
-			lastFive = tempList.subList(0, tempList.size() - 1);
+			lastFive = tempList.subList(0, tempList.size());
 			
 		}
 
@@ -116,6 +116,16 @@ public class ArticleDaoImplTest implements ArticleDao {
 		return returnList;
 	}
 
+	// Get info article
+	private Article getInfoArticle() {
+		
+		for (Article a : articles) {
+			if (a.isInfo()) return a;
+		}
+		
+		return null;
+	}
+	
 	// Comparator
 	private class ArticlesDateComparator implements Comparator<Article> {
 
