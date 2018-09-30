@@ -8,4 +8,6 @@ public interface ArticleService {
 	
 	public List<Article> getAllArticles();
 
+	public List<Article> getFiveLastArticles();
+
 }

@@ -1,6 +1,8 @@
 package ru.travellena.blog.dao;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -33,6 +35,7 @@ public class ArticleDaoImplTest implements ArticleDao {
 		a6.setTitle("Day 6");
 		a7.setTitle("Day 7");
 		aInfo.setTitle("About us");
+		aInfo.setInfo(true);
 
 		a1.setBody(
 				"Наконец мы решили отправиться к знаменитому Большому Будде. Называется он так потому что является второй самой большой бронзовой статуей сидячего Будды в мире (первая если что на Тайване ;) ) Вообще занятно сколько делают разных статуй Будды со статусами: самый большой лежащий, самый большой сидящий, самый большой золотой, самый большой в камне и т.д. Наверно для привлечения туристов, которые для галочки могут туда съездить и потом говорить: я видел самого большого лежащего золотого Будду )) А может просто, думают, что снизойдёт на них благословение Будды таким образом. Это лишь мои субъективные домыслы. Но закончим лирическое отступление.");
@@ -60,12 +63,75 @@ public class ArticleDaoImplTest implements ArticleDao {
 		articles.add(a7);
 		articles.add(aInfo);
 
+		Date refDate = new Date();
+		int id = 1;
+		long timeDelta = 86400000;
+		for (Article a : articles) {
+			a.setId(id);
+			a.setPublishDate(new Date(refDate.getTime() + timeDelta));
+			
+			id++;
+			timeDelta += timeDelta;
+		}
+
 	}
 
 	@Override
 	public List<Article> getAllArticles() {
 
-		return articles;
+		return getClearList(articles);
+	}
+
+	@Override
+	public List<Article> getFiveLastArticles() {
+
+		List<Article> tempList = getClearList(articles);
+
+		tempList.sort(new ArticlesDateComparator().reversed());
+
+		List<Article> lastFive = new ArrayList<>();
+
+		if (tempList.size() >= 5) {
+			lastFive = tempList.subList(0, 5);
+			
+		} else {
+			lastFive = tempList.subList(0, tempList.size() - 1);
+			
+		}
+
+		return lastFive;
+	}
+
+	//*********************************************
+	// Help method to get list without info article
+	private List<Article> getClearList(List<Article> articles) {
+
+		List<Article> returnList = new ArrayList<>();
+
+		for (Article a : articles) {
+			if (!a.isInfo())
+				returnList.add(a);
+		}
+
+		return returnList;
+	}
+
+	// Comparator
+	private class ArticlesDateComparator implements Comparator<Article> {
+
+		@Override
+		public int compare(Article o1, Article o2) {
+			int res = 0;
+
+			if (o1.getPublishDate().getTime() > o2.getPublishDate().getTime()) {
+				res = 1;
+			} else if (o1.getPublishDate().getTime() < o2.getPublishDate().getTime()) {
+				res = -1;
+			}
+
+			return res;
+		}
+
 	}
 
 }

@@ -7,5 +7,7 @@ import ru.travellena.blog.entity.Article;
 public interface ArticleDao {
 
 	public List<Article> getAllArticles();
+
+	public List<Article> getFiveLastArticles();
 	
 }

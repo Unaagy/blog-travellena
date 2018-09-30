@@ -11,8 +11,8 @@ public class Article {
 	private User author;
 	private Date eventDate;
 	private Date publishDate;
-	private boolean isReadyToPublish;
-	private boolean isInfo;
+	private boolean readyToPublish;
+	private boolean info;
 
 	// Constructors
 	public Article() {
@@ -21,15 +21,15 @@ public class Article {
 
 	// full constructor
 	public Article(String title, String coverLink, String body, User author, Date eventDate, Date publishDate,
-			boolean isReadyToPublish, boolean isInfo) {
+			boolean ReadyToPublish, boolean Info) {
 		this.title = title;
 		this.coverLink = coverLink;
 		this.body = body;
 		this.author = author;
 		this.eventDate = eventDate;
 		this.publishDate = publishDate;
-		this.isReadyToPublish = isReadyToPublish;
-		this.isInfo = isInfo;
+		this.readyToPublish = ReadyToPublish;
+		this.info = Info;
 	}
 
 	// short constructor
@@ -97,27 +97,27 @@ public class Article {
 	}
 
 	public boolean isReadyToPublish() {
-		return isReadyToPublish;
-	}
-
-	public void setReadyToPublish(boolean isReadyToPublish) {
-		this.isReadyToPublish = isReadyToPublish;
+		return readyToPublish;
 	}
 
 	public boolean isInfo() {
-		return isInfo;
+		return info;
 	}
 
-	public void setInfo(boolean isInfo) {
-		this.isInfo = isInfo;
+	public void setInfo(boolean info) {
+		this.info = info;
+	}
+
+	public void setReadyToPublish(boolean readyToPublish) {
+		this.readyToPublish = readyToPublish;
 	}
 
 	// To string
 	@Override
 	public String toString() {
-		return "Article [id=" + id + ", title=" + title + ", author=" + author + ", eventDate=" + eventDate
-				+ ", publishDate=" + publishDate + ", isReadyToPublish=" + isReadyToPublish + ", isInfo=" + isInfo
-				+ "]";
+		return "Article [id=" + id + ", title=" + title + ", coverLink=" + coverLink + ", body=" + body + ", author="
+				+ author + ", eventDate=" + eventDate + ", publishDate=" + publishDate + ", readyToPublish="
+				+ readyToPublish + ", info=" + info + "]";
 	}
 
 }
