@@ -16,7 +16,11 @@
 	<a href="${pageContext.request.contextPath}/article/showTableOfContext">[Table
 		of context]</a>
 	<a href="${pageContext.request.contextPath}/article/showDrafts">[Drafts]</a>
-	<a href="${pageContext.request.contextPath}/article/showAbout">[About us]</a>
+	<a href="${pageContext.request.contextPath}/article/showAbout">[About
+		us]</a>
+	<br>
+	<input type="button" value="Add Article"
+		onclick="window.location.href='showFormForAdd'; return false;" />
 	<br>
 
 	<h2>Five last articles</h2>
