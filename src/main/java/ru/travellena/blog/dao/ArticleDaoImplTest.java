@@ -1,6 +1,7 @@
 package ru.travellena.blog.dao;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
@@ -53,6 +54,15 @@ public class ArticleDaoImplTest implements ArticleDao {
 				"Устав от шума, грязи и бесконечного трафика, мы решили в этот день сгонять на другой остров - Лама, также находящийся в полномочии Гонконга. Плыть туда надо на пароме, который отправляется от центрального причала. Позавтракав чём-то непонятным (то ли рыбные шарики, то ли из других каких-то морегадов), мы направились к паромной станции. Искать нужный нам кораблик долго не пришлось, достаточно было сказать «Лама?» и вам указывают куда идти. Билет в один конец стоил 17,8 hkd (но то было в будни, в выходные уже чуть дороже), ехать минут 30-40. Вышли мы в северной части острова (название станции я как всегда не смогла ни выговорить ни запомнить). Вооружившись мепсми, мы пошли правее, вдоль моря, затем попали то ли на рынок, то ли на главную улицу острова. Там было давольно оживлённо и за небольшими прилавками продавали всякую всячину. Тут же были кафешки да ресторанчики с морегадами, которых нельзя было фотографировать.");
 		aInfo.setBody("We are crazy travelers!!!");
 
+		a1.setReadyToPublish(true);
+		a2.setReadyToPublish(true);
+		a3.setReadyToPublish(true);
+		a4.setReadyToPublish(true);
+		a5.setReadyToPublish(true);
+		a6.setReadyToPublish(true);
+		a7.setReadyToPublish(false);
+		aInfo.setReadyToPublish(true);
+
 		articles = new ArrayList<>();
 		articles.add(a1);
 		articles.add(a2);
@@ -69,7 +79,7 @@ public class ArticleDaoImplTest implements ArticleDao {
 		for (Article a : articles) {
 			a.setId(id);
 			a.setPublishDate(new Date(refDate.getTime() + timeDelta));
-			
+
 			id++;
 			timeDelta = timeDelta * 2;
 		}
@@ -89,27 +99,46 @@ public class ArticleDaoImplTest implements ArticleDao {
 
 		tempList.sort(new ArticlesDateComparator().reversed());
 
-		List<Article> lastFive = new ArrayList<>();
+		List<Article> lastFive = null;
 
 		if (tempList.size() >= 5) {
 			lastFive = tempList.subList(0, 5);
-			
+
 		} else {
 			lastFive = tempList.subList(0, tempList.size());
-			
+
 		}
 
 		return lastFive;
 	}
 
-	//*********************************************
-	// Help method to get list without info article
+	@Override
+	public List<Article> getDrafts() {
+
+		List<Article> drafts = new ArrayList<>();
+
+		for (Article a : articles) {
+			if (!a.isReadyToPublish() && !a.isInfo())
+				drafts.add(a);
+		}
+
+		if (drafts.size() == 0) {
+			drafts.add(new Article());
+			drafts.get(0).setTitle("=== No Drafts ===");
+			drafts.get(0).setPublishDate(new Date());
+		}
+
+		return drafts;
+	}
+
+	// *********************************************
+	// Help method to get list without info article and ready to be published
 	private List<Article> getClearList(List<Article> articles) {
 
 		List<Article> returnList = new ArrayList<>();
 
 		for (Article a : articles) {
-			if (!a.isInfo())
+			if (!a.isInfo() && a.isReadyToPublish())
 				returnList.add(a);
 		}
 
@@ -118,14 +147,15 @@ public class ArticleDaoImplTest implements ArticleDao {
 
 	// Get info article
 	private Article getInfoArticle() {
-		
+
 		for (Article a : articles) {
-			if (a.isInfo()) return a;
+			if (a.isInfo())
+				return a;
 		}
-		
+
 		return null;
 	}
-	
+
 	// Comparator
 	private class ArticlesDateComparator implements Comparator<Article> {
 

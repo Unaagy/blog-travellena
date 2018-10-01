@@ -10,4 +10,6 @@ public interface ArticleService {
 
 	public List<Article> getFiveLastArticles();
 
+	public List<Article> getDrafts();
+
 }

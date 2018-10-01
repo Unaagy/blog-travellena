@@ -7,21 +7,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Travellena - All Articles</title>
+<title>Travellena - Drafts</title>
 </head>
 <body>
 
-	<h2>Articles</h2>
+	<h2>Drafts</h2>
 	<hr>
 	<hr>
 
-	<c:forEach var="tempArticle" items="${articles}">
+	<c:forEach var="tempDraft" items="${drafts}">
 	
-		${tempArticle.title}, ${tempArticle.eventDate}
+		${tempDraft.title}, ${tempDraft.eventDate}
 		<br>
-		published: ${tempArticle.publishDate}
+		published: ${tempDraft.publishDate}
 		<br>
-		${tempArticle.body}
+		is ready to publish: ${tempDraft.readyToPublish}
+		<br>
+		${tempDraft.body}
 		<br>
 		<hr>
 

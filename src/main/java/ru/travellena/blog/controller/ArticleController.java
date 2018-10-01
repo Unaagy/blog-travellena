@@ -24,11 +24,27 @@ public class ArticleController {
 	}
 	
 	@GetMapping("/showList")
-	public String showIndex(Model theModel) {
+	public String showList(Model theModel) {
 		
 		theModel.addAttribute("articles", service.getAllArticles());
 		
 		return "articles-list";
+	}
+	
+	@GetMapping("/showTableOfContext")
+	public String showTableOfContext(Model theModel) {
+		
+		theModel.addAttribute("articles", service.getAllArticles());
+		
+		return "articles-table-of-context";
+	}
+	
+	@GetMapping("/showDrafts")
+	public String showDrafts(Model theModel) {
+		
+		theModel.addAttribute("drafts", service.getDrafts());
+		
+		return "articles-drafts";
 	}
 
 }

@@ -7,11 +7,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Travellena - Main</title>
+<title>Travellena</title>
 </head>
 <body>
 
-	<a href="${pageContext.request.contextPath}/article/showList">All articles</a>
+	<a href="${pageContext.request.contextPath}/article/showList">[All
+		articles]</a>
+	<a href="${pageContext.request.contextPath}/article/showTableOfContext">[Table
+		of context]</a>
+	<a href="${pageContext.request.contextPath}/article/showDrafts">[Drafts]</a>
 	<br>
 
 	<h2>Five last articles</h2>

@@ -7,11 +7,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Travellena - All Articles</title>
+<title>Travellena - Table of Context</title>
 </head>
 <body>
 
-	<h2>Articles</h2>
+	<h2>Table of context</h2>
 	<hr>
 	<hr>
 
@@ -20,9 +20,6 @@
 		${tempArticle.title}, ${tempArticle.eventDate}
 		<br>
 		published: ${tempArticle.publishDate}
-		<br>
-		${tempArticle.body}
-		<br>
 		<hr>
 
 	</c:forEach>

@@ -28,4 +28,10 @@ public class ArticleServiceImpl implements ArticleService {
 		return dao.getFiveLastArticles();
 	}
 
+	@Override
+	public List<Article> getDrafts() {
+		
+		return dao.getDrafts();
+	}
+
 }
