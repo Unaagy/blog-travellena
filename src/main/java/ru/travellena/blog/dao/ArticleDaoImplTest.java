@@ -146,6 +146,7 @@ public class ArticleDaoImplTest implements ArticleDao {
 
 	}
 
+	@Override
 	public Article getArticle(long id) {
 
 		for (Article a : articles) {

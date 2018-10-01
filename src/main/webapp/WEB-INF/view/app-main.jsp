@@ -29,7 +29,12 @@
 
 	<c:forEach var="tempArticle" items="${articles}">
 	
-		id: ${tempArticle.id} title: ${tempArticle.title}
+		<!-- create update link variable -->
+		<c:url var="updateLink" value="/article/showFormForUpdate">
+			<c:param name="articleId" value="${tempArticle.id}"></c:param>
+		</c:url>
+	
+		id: ${tempArticle.id} title: ${tempArticle.title} <a href="${updateLink}">[Update]</a>
 		<br>
 		publish date: ${tempArticle.publishDate}
 		<br>

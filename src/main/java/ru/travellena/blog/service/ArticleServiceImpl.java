@@ -46,4 +46,10 @@ public class ArticleServiceImpl implements ArticleService {
 		dao.saveArticle(theArticle);
 	}
 
+	@Override
+	public Article getArticle(long theId) {
+		
+		return dao.getArticle(theId);
+	}
+
 }
