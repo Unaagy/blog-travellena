@@ -14,4 +14,6 @@ public interface ArticleService {
 
 	public Article getInfoArticle();
 
+	public void saveArticle(Article theArticle);
+
 }

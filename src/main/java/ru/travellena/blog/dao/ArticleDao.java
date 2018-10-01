@@ -17,5 +17,8 @@ public interface ArticleDao {
 
 	// Returns one article with "about" content
 	public Article getInfoArticle();
+
+	// Save or Update article
+	public void saveArticle(Article theArticle);
 	
 }

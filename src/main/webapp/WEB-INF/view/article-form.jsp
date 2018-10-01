@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Travellena - Create Article</title>
+<title>Travellena - Article Form</title>
 </head>
 <body>
 
@@ -44,6 +44,8 @@
 		<input type="submit" value="Save Article">
 
 	</form:form>
+	
+	<a href="${pageContext.request.contextPath}/article/main">Back to Main page</a>
 
 </body>
 </html>

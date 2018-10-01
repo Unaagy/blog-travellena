@@ -77,7 +77,7 @@ public class ArticleDaoImplTest implements ArticleDao {
 		long timeDelta = 86400000;
 		for (Article a : articles) {
 			a.setId(id);
-			a.setPublishDate(new Date(refDate.getTime() + timeDelta));
+			a.setPublishDate(new Date(refDate.getTime() - timeDelta));
 
 			id++;
 			timeDelta = timeDelta * 2;
@@ -122,6 +122,38 @@ public class ArticleDaoImplTest implements ArticleDao {
 		}
 
 		return drafts;
+	}
+
+	@Override
+	public void saveArticle(Article theArticle) {
+
+		if (theArticle.getId() == 0) {
+			theArticle.setId(articles.size() + 1);
+			articles.add(theArticle);
+
+		} else {
+			int index = 0;
+
+			for (int i = 0; i < articles.size(); i++) {
+				if (articles.get(i).getId() == theArticle.getId()) {
+					index = i;
+					break;
+				}
+			}
+
+			articles.set(index, theArticle);
+		}
+
+	}
+
+	public Article getArticle(long id) {
+
+		for (Article a : articles) {
+			if (a.getId() == id)
+				return a;
+		}
+
+		return null;
 	}
 
 	// *********************************************

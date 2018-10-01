@@ -86,7 +86,42 @@ public class ArticleController {
 	@PostMapping("/saveArticle")
 	public String saveArticle(@ModelAttribute("article") Article theArticle) {
 
+		if (theArticle.isReadyToPublish()) {
+			theArticle.setPublishDate(new Date());
+		}
+		
+		service.saveArticle(theArticle);
+		
+		System.out.println(theArticle);
+		
 		return "redirect:/";
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
