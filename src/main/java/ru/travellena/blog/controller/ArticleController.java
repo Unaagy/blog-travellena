@@ -85,61 +85,34 @@ public class ArticleController {
 
 	@PostMapping("/saveArticle")
 	public String saveArticle(@ModelAttribute("article") Article theArticle) {
-		
+
 		if (theArticle.isReadyToPublish() && theArticle.getPublishDate() == null) {
 			theArticle.setPublishDate(new Date());
 		}
-		
+
 		System.out.println(theArticle);
-		
+
 		service.saveArticle(theArticle);
-		
-		return "redirect:/";
-	}
-	
-	@GetMapping("/showFormForUpdate")
-	public String showFormForUpdate(@RequestParam("articleId") long theId, Model theModel) {
-		
-		Article theArticle = service.getArticle(theId);
-		
-		theModel.addAttribute(theArticle);
-		
-		return "article-form";
-	}
-	
-	@PostMapping("/delete")
-	public String deleteArticle(@RequestParam("articleId") long theId) {
-		
-		service.deleteArticle(theId);
-		
+
 		return "redirect:/";
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@GetMapping("/showFormForUpdate")
+	public String showFormForUpdate(@RequestParam("articleId") long theId, Model theModel) {
+
+		Article theArticle = service.getArticle(theId);
+
+		theModel.addAttribute(theArticle);
+
+		return "article-form";
+	}
+
+	@GetMapping("/delete")
+	public String deleteArticle(@RequestParam("articleId") long theId) {
+
+		service.deleteArticle(theId);
+
+		return "redirect:/";
+	}
+
 }
