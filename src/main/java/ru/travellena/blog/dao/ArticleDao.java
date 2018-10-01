@@ -14,5 +14,8 @@ public interface ArticleDao {
 	
 	// Should return all drafts - articles which isn't ready to be published
 	public List<Article> getDrafts();
+
+	// Returns one article with "about" content
+	public Article getInfoArticle();
 	
 }

@@ -12,4 +12,6 @@ public interface ArticleService {
 
 	public List<Article> getDrafts();
 
+	public Article getInfoArticle();
+
 }

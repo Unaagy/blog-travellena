@@ -46,5 +46,41 @@ public class ArticleController {
 		
 		return "articles-drafts";
 	}
+	
+	@GetMapping("/showAbout")
+	public String showAbout(Model theModel) {
+		
+		theModel.addAttribute("infoArticle", service.getInfoArticle());
+		
+		return "app-about";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

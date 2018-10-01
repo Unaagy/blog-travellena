@@ -1,7 +1,6 @@
 package ru.travellena.blog.dao;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
@@ -122,12 +121,6 @@ public class ArticleDaoImplTest implements ArticleDao {
 				drafts.add(a);
 		}
 
-		if (drafts.size() == 0) {
-			drafts.add(new Article());
-			drafts.get(0).setTitle("=== No Drafts ===");
-			drafts.get(0).setPublishDate(new Date());
-		}
-
 		return drafts;
 	}
 
@@ -146,7 +139,7 @@ public class ArticleDaoImplTest implements ArticleDao {
 	}
 
 	// Get info article
-	private Article getInfoArticle() {
+	public Article getInfoArticle() {
 
 		for (Article a : articles) {
 			if (a.isInfo())

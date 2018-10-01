@@ -34,4 +34,10 @@ public class ArticleServiceImpl implements ArticleService {
 		return dao.getDrafts();
 	}
 
+	@Override
+	public Article getInfoArticle() {
+		
+		return dao.getInfoArticle();
+	}
+
 }
