@@ -21,7 +21,10 @@ public interface ArticleDao {
 	// Save or Update article
 	public void saveArticle(Article theArticle);
 
-	// Get Article by article Id
+	// Get Article by article ID
 	public Article getArticle(long theId);
+
+	// Delete Article by article ID
+	public void deleteArticle(long theId);
 	
 }

@@ -1,5 +1,8 @@
 package ru.travellena.blog.config;
 
+import javax.servlet.Filter;
+
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class AppDispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -20,6 +23,15 @@ public class AppDispatcherServletInitializer extends AbstractAnnotationConfigDis
 	protected String[] getServletMappings() {
 
 		return new String[] { "/" };
+	}
+
+	// Encoding Filters
+	@Override
+	protected Filter[] getServletFilters() {
+		CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+		characterEncodingFilter.setEncoding("UTF-8");
+		characterEncodingFilter.setForceEncoding(true);
+		return new Filter[] { characterEncodingFilter };
 	}
 
 }

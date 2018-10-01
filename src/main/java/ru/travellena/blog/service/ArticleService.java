@@ -18,4 +18,6 @@ public interface ArticleService {
 
 	public Article getArticle(long theId);
 
+	public void deleteArticle(long theId);
+
 }

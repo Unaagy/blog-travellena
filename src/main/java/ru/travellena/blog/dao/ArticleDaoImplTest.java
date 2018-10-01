@@ -157,6 +157,19 @@ public class ArticleDaoImplTest implements ArticleDao {
 		return null;
 	}
 
+	@Override
+	public void deleteArticle(long theId) {
+		int index = 0;
+		for (int i = 0; i < articles.size(); i++) {
+			if (theId == articles.get(i).getId()) {
+				index = i;
+				break;
+			}
+		}
+
+		articles.remove(index);
+	}
+
 	// *********************************************
 	// Help method to get list without info article and ready to be published
 	private List<Article> getClearList(List<Article> articles) {

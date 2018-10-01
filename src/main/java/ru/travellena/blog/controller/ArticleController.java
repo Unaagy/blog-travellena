@@ -85,14 +85,14 @@ public class ArticleController {
 
 	@PostMapping("/saveArticle")
 	public String saveArticle(@ModelAttribute("article") Article theArticle) {
-
+		
 		if (theArticle.isReadyToPublish() && theArticle.getPublishDate() == null) {
 			theArticle.setPublishDate(new Date());
 		}
 		
-		service.saveArticle(theArticle);
-		
 		System.out.println(theArticle);
+		
+		service.saveArticle(theArticle);
 		
 		return "redirect:/";
 	}
@@ -105,6 +105,14 @@ public class ArticleController {
 		theModel.addAttribute(theArticle);
 		
 		return "article-form";
+	}
+	
+	@PostMapping("/delete")
+	public String deleteArticle(@RequestParam("articleId") long theId) {
+		
+		service.deleteArticle(theId);
+		
+		return "redirect:/";
 	}
 
 	
