@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import ru.travellena.blog.entity.Article;
 import ru.travellena.blog.service.ArticleService;
@@ -82,11 +83,10 @@ public class ArticleController {
 		return "article-form";
 	}
 
-	// TODO
 	@PostMapping("/saveArticle")
 	public String saveArticle(@ModelAttribute("article") Article theArticle) {
 
-		if (theArticle.isReadyToPublish()) {
+		if (theArticle.isReadyToPublish() && theArticle.getPublishDate() == null) {
 			theArticle.setPublishDate(new Date());
 		}
 		
@@ -95,6 +95,16 @@ public class ArticleController {
 		System.out.println(theArticle);
 		
 		return "redirect:/";
+	}
+	
+	@GetMapping("/showFormForUpdate")
+	public String showFormForUpdate(@RequestParam("articleId") long theId, Model theModel) {
+		
+		Article theArticle = service.getArticle(theId);
+		
+		theModel.addAttribute(theArticle);
+		
+		return "article-form";
 	}
 
 	

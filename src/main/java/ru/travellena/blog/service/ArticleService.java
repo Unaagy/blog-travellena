@@ -16,4 +16,6 @@ public interface ArticleService {
 
 	public void saveArticle(Article theArticle);
 
+	public Article getArticle(long theId);
+
 }
