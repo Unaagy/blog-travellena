@@ -114,5 +114,32 @@ public class ArticleController {
 
 		return "redirect:/";
 	}
+	
+	@GetMapping("/showArticle")
+	public String showArticle(@RequestParam("articleId") long theId, Model theModel) {
+		
+		Article theArticle = service.getArticle(theId);
+		
+		theModel.addAttribute("article", theArticle);
+		
+		return "article-card";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

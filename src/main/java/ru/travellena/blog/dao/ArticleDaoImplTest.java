@@ -128,7 +128,7 @@ public class ArticleDaoImplTest implements ArticleDao {
 	public void saveArticle(Article theArticle) {
 
 		if (theArticle.getId() == 0) {
-			theArticle.setId(articles.size() + 1);
+			theArticle.setId(getMaxId() + 1);
 			articles.add(theArticle);
 
 		} else {
@@ -172,6 +172,18 @@ public class ArticleDaoImplTest implements ArticleDao {
 
 	// *********************************************
 	// Help method to get list without info article and ready to be published
+	private long getMaxId() {
+		long max = 0;
+		
+		for (Article a : articles) {
+			if (a.getId() > max) {
+				max = a.getId();
+			}
+		}
+		
+		return max;
+	}
+	
 	private List<Article> getClearList(List<Article> articles) {
 
 		List<Article> returnList = new ArrayList<>();
