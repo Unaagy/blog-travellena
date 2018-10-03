@@ -29,7 +29,7 @@ public class ArticleController {
 
 	@GetMapping("/main")
 	public String showMain(Model theModel, HttpServletRequest request) {
-		
+
 		theModel.addAttribute("articles", service.getFiveLastArticles());
 		theModel.addAttribute("path", getRequsetPath(request));
 
@@ -65,7 +65,7 @@ public class ArticleController {
 
 	@GetMapping("/showAbout")
 	public String showAbout(Model theModel, HttpServletRequest request) {
-		
+
 		theModel.addAttribute("infoArticle", service.getInfoArticle());
 		theModel.addAttribute("path", getRequsetPath(request));
 
@@ -82,9 +82,6 @@ public class ArticleController {
 	@GetMapping("/showFormForAdd")
 	public String showFormForAdd(@RequestParam("fromPage") String fromPage, Model theModel) {
 
-		// TEMP
-		System.out.println("In the showFormForAdd controller: " + fromPage);
-
 		Article article = new Article();
 		article.setEventDate(new Date());
 
@@ -98,9 +95,6 @@ public class ArticleController {
 	public String showFormForUpdate(@RequestParam("articleId") long theId, @RequestParam("fromPage") String fromPage,
 			Model theModel) {
 
-		// TEMP
-		System.out.println("In the showFormForUpdate controller: " + fromPage);
-
 		Article theArticle = service.getArticle(theId);
 
 		theModel.addAttribute("article", theArticle);
@@ -113,9 +107,6 @@ public class ArticleController {
 	public String saveArticle(@ModelAttribute("article") Article theArticle,
 			@RequestParam("fromPage") String fromPage) {
 
-		// TEMP
-		System.out.println("In the Save controller: " + fromPage);
-
 		if (theArticle.isReadyToPublish() && theArticle.getPublishDate() == null) {
 			theArticle.setPublishDate(new Date());
 		}
@@ -124,21 +115,20 @@ public class ArticleController {
 
 		service.saveArticle(theArticle);
 
-//		return "redirect:/";
-		return "redirect:" + fromPage;		
+		return "redirect:" + fromPage;
 	}
 
 	@GetMapping("/delete")
 	public String deleteArticle(@RequestParam("articleId") long theId, HttpServletRequest request) {
 
 		service.deleteArticle(theId);
-		
+
 		String referer = request.getHeader("Referer");
 		System.out.println("===>>> Before: " + referer);
 		if (referer.contains("/showArticle"))
 			referer = "/";
 		System.out.println("===>>> Before: " + referer);
-		
+
 		return "redirect:" + referer;
 	}
 
@@ -146,7 +136,7 @@ public class ArticleController {
 	public String showArticle(@RequestParam("articleId") long theId, Model theModel, HttpServletRequest request) {
 
 		Article theArticle = service.getArticle(theId);
-		
+
 		String path = getRequsetPath(request) + "?articleId=" + theId;
 
 		theModel.addAttribute("article", theArticle);
@@ -154,7 +144,7 @@ public class ArticleController {
 
 		return "article-card";
 	}
-	
+
 	// *******
 	private String getRequsetPath(HttpServletRequest request) {
 		String context = request.getContextPath();
