@@ -20,6 +20,7 @@
 		<!-- create update link variable -->
 		<c:url var="updateLink" value="/article/showFormForUpdate">
 			<c:param name="articleId" value="${tempDraft.id}" />
+			<c:param name="fromPage" value='${path}' />
 		</c:url>
 
 		<!-- create delete link variable -->

@@ -19,8 +19,17 @@
 	<a href="${pageContext.request.contextPath}/article/showAbout">[About
 		us]</a>
 	<br>
+
+	${path} === |||
+	${pageContext.request.requestURL}|||
+	${pageContext.session.servletContext.contextPath}
+
+	<!-- create CREATE link variable -->
+	<c:url var="createLink" value="/article/showFormForAdd">
+		<c:param name="fromPage" value='${path}' />
+	</c:url>
 	<input type="button" value="Add Article"
-		onclick="window.location.href='showFormForAdd'; return false;" />
+		onclick="window.location.href='${createLink}'; return false;" />
 	<br>
 
 	<h2>Five last articles</h2>
@@ -32,6 +41,7 @@
 		<!-- create update link variable -->
 		<c:url var="updateLink" value="/article/showFormForUpdate">
 			<c:param name="articleId" value="${tempArticle.id}" />
+			<c:param name="fromPage" value='${path}' />
 		</c:url>
 
 		<!-- create delete link variable -->
@@ -43,18 +53,17 @@
 		<c:url var="openArticle" value="/article/showArticle">
 			<c:param name="articleId" value="${tempArticle.id}"></c:param>
 		</c:url>
-	
-		<h3><a href="${openArticle}">${tempArticle.title}</a></h3>
-		<p>id: ${tempArticle.id}
-		<a href="${updateLink}">[Update]</a>
-		<a href="${deleteLink}"
-			onclick="if (!(confirm('Are you sure you want to delete this article?'))) return false">[Delete]</a>
-		<br>
-		publish date: ${tempArticle.publishDate}
-		<br>
-		is ready to publish: ${tempArticle.readyToPublish}
-		<br>
-		${tempArticle.body}
+
+		<h3>
+			<a href="${openArticle}">${tempArticle.title}</a>
+		</h3>
+		<p>
+			id: ${tempArticle.id} <a href="${updateLink}">[Update]</a>
+			<a	href="${deleteLink}"
+				onclick="if (!(confirm('Are you sure you want to delete this article?'))) return false">[Delete]</a>
+			<br> publish date: ${tempArticle.publishDate} <br> is ready
+			to publish: ${tempArticle.readyToPublish} <br>
+			${tempArticle.body}
 		<hr>
 
 	</c:forEach>

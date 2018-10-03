@@ -1,3 +1,4 @@
+<%@page import="java.util.Enumeration"%>
 <%@ page language="java" contentType="text/html;charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -18,9 +19,10 @@
 		<form:hidden path="id" />
 		<form:hidden path="publishDate" />
 		<form:hidden path="author" />
+		<input type="hidden" name="fromPage" value='${fromPage}'/>
 		
 		Title:<br>
-		<form:input path="title" accept-charset="UTF-8"/>
+		<form:input path="title" />
 		<br>
 		
 		Event date:<br>
@@ -45,8 +47,8 @@
 
 	</form:form>
 
-	<a href="${pageContext.request.contextPath}/article/main">Back to
-		Main page</a>
+	<br>
+	<input type="button" value="<<--- Назад" onclick="history.go(-1)" />
 
 </body>
 </html>
