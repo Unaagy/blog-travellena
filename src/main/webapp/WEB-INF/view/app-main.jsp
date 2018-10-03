@@ -20,10 +20,6 @@
 		us]</a>
 	<br>
 
-	${path} === |||
-	${pageContext.request.requestURL}|||
-	${pageContext.session.servletContext.contextPath}
-
 	<!-- create CREATE link variable -->
 	<c:url var="createLink" value="/article/showFormForAdd">
 		<c:param name="fromPage" value='${path}' />
@@ -58,8 +54,8 @@
 			<a href="${openArticle}">${tempArticle.title}</a>
 		</h3>
 		<p>
-			id: ${tempArticle.id} <a href="${updateLink}">[Update]</a>
-			<a	href="${deleteLink}"
+			id: ${tempArticle.id} <a href="${updateLink}">[Update]</a> <a
+				href="${deleteLink}"
 				onclick="if (!(confirm('Are you sure you want to delete this article?'))) return false">[Delete]</a>
 			<br> publish date: ${tempArticle.publishDate} <br> is ready
 			to publish: ${tempArticle.readyToPublish} <br>

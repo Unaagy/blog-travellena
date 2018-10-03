@@ -36,13 +36,6 @@ public class ArticleController {
 		return "app-main";
 	}
 
-	private String getRequsetPath(HttpServletRequest request) {
-		String context = request.getContextPath();
-		String reqUri = request.getRequestURI();
-		String path = reqUri.replaceAll(context, "");
-		return path;
-	}
-
 	@GetMapping("/showList")
 	public String showList(Model theModel, HttpServletRequest request) {
 
@@ -140,17 +133,34 @@ public class ArticleController {
 
 		service.deleteArticle(theId);
 		
-		return "redirect:" + request.getHeader("Referer");
+		String referer = request.getHeader("Referer");
+		System.out.println("===>>> Before: " + referer);
+		if (referer.contains("/showArticle"))
+			referer = "/";
+		System.out.println("===>>> Before: " + referer);
+		
+		return "redirect:" + referer;
 	}
 
 	@GetMapping("/showArticle")
-	public String showArticle(@RequestParam("articleId") long theId, Model theModel) {
+	public String showArticle(@RequestParam("articleId") long theId, Model theModel, HttpServletRequest request) {
 
 		Article theArticle = service.getArticle(theId);
+		
+		String path = getRequsetPath(request) + "?articleId=" + theId;
 
 		theModel.addAttribute("article", theArticle);
+		theModel.addAttribute("path", path);
 
 		return "article-card";
+	}
+	
+	// *******
+	private String getRequsetPath(HttpServletRequest request) {
+		String context = request.getContextPath();
+		String reqUri = request.getRequestURI();
+		String path = reqUri.replaceAll(context, "");
+		return path;
 	}
 
 }

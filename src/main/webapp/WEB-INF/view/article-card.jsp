@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -11,11 +12,22 @@
 </head>
 <body>
 
+	<!-- create update link variable -->
+	<c:url var="updateLink" value="/article/showFormForUpdate">
+		<c:param name="articleId" value="${article.id}" />
+		<c:param name="fromPage" value="${path}" />
+	</c:url>
+	<!-- create delete link variable -->
+	<c:url var="deleteLink" value="/article/delete">
+		<c:param name="articleId" value="${article.id}" />
+	</c:url>
+
 	<h2>${article.title}</h2>
+	<a href="${updateLink}">[Update]</a>
+	<a href="${deleteLink}"
+		onclick="if (!(confirm('Are you sure you want to delete this article?'))) return false">[Delete]</a>
 	<hr>
-	<p>
-		${article.body}
-	</p>
+	<p>${article.body}</p>
 
 </body>
 </html>
