@@ -16,15 +16,34 @@
 	<hr>
 
 	<c:forEach var="tempDraft" items="${drafts}">
-	
-		${tempDraft.title}, ${tempDraft.eventDate}
-		<br>
-		published: ${tempDraft.publishDate}
-		<br>
-		is ready to publish: ${tempDraft.readyToPublish}
-		<br>
-		${tempDraft.body}
-		<br>
+
+		<!-- create update link variable -->
+		<c:url var="updateLink" value="/article/showFormForUpdate">
+			<c:param name="articleId" value="${tempDraft.id}" />
+		</c:url>
+
+		<!-- create delete link variable -->
+		<c:url var="deleteLink" value="/article/delete">
+			<c:param name="articleId" value="${tempDraft.id}" />
+		</c:url>
+
+		<!-- create link variable to open Article -->
+		<c:url var="openDraft" value="/article/showArticle">
+			<c:param name="articleId" value="${tempDraft.id}"></c:param>
+		</c:url>
+
+		<h3>
+			<a href="${openDraft}">${tempDraft.title}, ${tempDraft.eventDate}</a>
+		</h3>
+		<p>
+			<a href="${updateLink}">[Update]</a> 
+			<a href="${deleteLink}"
+				onclick="if (!(confirm('Are you sure you want to delete this article?'))) return false">[Delete]</a>
+			<br>
+			<br>
+			published: ${tempDraft.publishDate}
+			<br> is ready to publish: ${tempDraft.readyToPublish} <br>
+			${tempDraft.body} <br>
 		<hr>
 
 	</c:forEach>

@@ -16,8 +16,29 @@
 	<hr>
 
 	<c:forEach var="tempArticle" items="${articles}">
-	
-		${tempArticle.title}, ${tempArticle.eventDate}
+
+		<!-- create update link variable -->
+		<c:url var="updateLink" value="/article/showFormForUpdate">
+			<c:param name="articleId" value="${tempArticle.id}" />
+		</c:url>
+
+		<!-- create delete link variable -->
+		<c:url var="deleteLink" value="/article/delete">
+			<c:param name="articleId" value="${tempArticle.id}" />
+		</c:url>
+
+		<!-- create link variable to open Article -->
+		<c:url var="openArticle" value="/article/showArticle">
+			<c:param name="articleId" value="${tempArticle.id}"></c:param>
+		</c:url>
+
+		<h3>
+			<a href="${openArticle}">${tempArticle.title}, ${tempArticle.eventDate}</a>
+		</h3>
+		<p><a href="${updateLink}">[Update]</a>
+		<a href="${deleteLink}"
+			onclick="if (!(confirm('Are you sure you want to delete this article?'))) return false">[Delete]</a>
+		<br>
 		<br>
 		published: ${tempArticle.publishDate}
 		<br>
