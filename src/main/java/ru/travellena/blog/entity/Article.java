@@ -2,6 +2,12 @@ package ru.travellena.blog.entity;
 
 import java.util.Date;
 
+/**
+ * Article entity
+ * 
+ * @author tuchnyak, https://github.com/Tuchnyak
+ *
+ */
 public class Article {
 
 	private long id;

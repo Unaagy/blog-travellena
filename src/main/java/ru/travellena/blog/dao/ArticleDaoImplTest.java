@@ -11,11 +11,23 @@ import org.springframework.stereotype.Repository;
 
 import ru.travellena.blog.entity.Article;
 
+/**
+ * DAO interface stub implementation
+ * 
+ * @author tuchnyak, https://github.com/Tuchnyak
+ *
+ */
 @Repository
 public class ArticleDaoImplTest implements ArticleDao {
 
+	/**
+	 * All stub articles
+	 */
 	private List<Article> articles;
 
+	/**
+	 * Initialization of the article list to test web-app
+	 */
 	@PostConstruct
 	private void initializeArticles() {
 		Article a1 = new Article();
@@ -123,7 +135,7 @@ public class ArticleDaoImplTest implements ArticleDao {
 
 		return drafts;
 	}
-	
+
 	// Get info article
 	public Article getInfoArticle() {
 
@@ -190,8 +202,9 @@ public class ArticleDaoImplTest implements ArticleDao {
 			searchedArticles = new ArrayList<>();
 
 			for (Article a : articles) {
-				if (!a.isInfo() && a.isReadyToPublish() && (a.getTitle().toLowerCase().contains(searchString.toLowerCase())
-						|| a.getBody().toLowerCase().contains(searchString.toLowerCase()))) {
+				if (!a.isInfo() && a.isReadyToPublish()
+						&& (a.getTitle().toLowerCase().contains(searchString.toLowerCase())
+								|| a.getBody().toLowerCase().contains(searchString.toLowerCase()))) {
 					searchedArticles.add(a);
 				}
 			}
@@ -206,6 +219,11 @@ public class ArticleDaoImplTest implements ArticleDao {
 
 	// *********************************************
 	// Help method to get list without info article and ready to be published
+	/**
+	 * Finds max article ID
+	 * 
+	 * @return long ID
+	 */
 	private long getMaxId() {
 		long max = 0;
 
@@ -218,6 +236,13 @@ public class ArticleDaoImplTest implements ArticleDao {
 		return max;
 	}
 
+	/**
+	 * Returns list of an articles which aren't informational and is ready to be
+	 * published
+	 * 
+	 * @param articles - all articles
+	 * @return list of clear articles
+	 */
 	private List<Article> getClearList(List<Article> articles) {
 
 		List<Article> returnList = new ArrayList<>();
@@ -230,7 +255,9 @@ public class ArticleDaoImplTest implements ArticleDao {
 		return returnList;
 	}
 
-	// Comparator
+	/**
+	 * Comparator to sort articles by publishing date
+	 */
 	private class ArticlesDateComparator implements Comparator<Article> {
 
 		@Override

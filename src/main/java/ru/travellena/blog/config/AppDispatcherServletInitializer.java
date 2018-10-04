@@ -5,6 +5,12 @@ import javax.servlet.Filter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+/**
+ * 
+ * @author tuchnyak, https://github.com/Tuchnyak
+ *
+ * @About Dispatcher servlet initializer and Encoding tuning
+ */
 public class AppDispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
@@ -25,7 +31,9 @@ public class AppDispatcherServletInitializer extends AbstractAnnotationConfigDis
 		return new String[] { "/" };
 	}
 
-	// Encoding Filters
+	/**
+	 * Encoding Filters to make Cyrillic acceptable for form submition
+	 */
 	@Override
 	protected Filter[] getServletFilters() {
 		CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();

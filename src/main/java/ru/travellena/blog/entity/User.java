@@ -1,5 +1,11 @@
 package ru.travellena.blog.entity;
 
+/**
+ * User entity
+ * 
+ * @author tuchnyak, https://github.com/Tuchnyak
+ *
+ */
 public class User {
 
 	private int id;

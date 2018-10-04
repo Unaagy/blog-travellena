@@ -9,58 +9,67 @@ import org.springframework.stereotype.Service;
 import ru.travellena.blog.dao.ArticleDao;
 import ru.travellena.blog.entity.Article;
 
+/**
+ * Article servise interface implementaiton
+ * 
+ * @author tuchnyak, https://github.com/Tuchnyak
+ *
+ */
 @Service
 public class ArticleServiceImpl implements ArticleService {
 
+	/**
+	 * Article DAO-layer dependency
+	 */
 	@Autowired
 	@Qualifier("articleDaoImplTest")
 	private ArticleDao dao;
-	
+
 	@Override
 	public List<Article> getAllArticles() {
-		
+
 		return dao.getAllArticles();
 	}
 
 	@Override
 	public List<Article> getFiveLastArticles() {
-		
+
 		return dao.getFiveLastArticles();
 	}
 
 	@Override
 	public List<Article> getDrafts() {
-		
+
 		return dao.getDrafts();
 	}
 
 	@Override
 	public Article getInfoArticle() {
-		
+
 		return dao.getInfoArticle();
 	}
 
 	@Override
 	public void saveArticle(Article theArticle) {
-		
+
 		dao.saveArticle(theArticle);
 	}
 
 	@Override
 	public Article getArticle(long theId) {
-		
+
 		return dao.getArticle(theId);
 	}
 
 	@Override
 	public void deleteArticle(long theId) {
-		
+
 		dao.deleteArticle(theId);
 	}
 
 	@Override
 	public List<Article> searchArticles(String searchString) {
-		
+
 		return dao.searchArticles(searchString);
 	}
 

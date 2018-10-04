@@ -9,6 +9,15 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+/**
+ * 
+ * @author tuchnyak, https://github.com/Tuchnyak
+ *
+ * @About Spring MVC web-application with Hibernate ORM implementation in form
+ *        of blog platform
+ * @Attention NO XML!
+ * @Description Configuration class for ORM, ViewResolver, etc.
+ */
 @Configuration
 @EnableWebMvc
 @EnableTransactionManagement
@@ -21,6 +30,9 @@ public class AppConfig implements WebMvcConfigurer {
 	 * config
 	 */
 
+	/**
+	 * Configuring ViewResolver
+	 */
 	@Bean
 	public ViewResolver viewResolver() {
 
