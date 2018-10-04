@@ -58,4 +58,10 @@ public class ArticleServiceImpl implements ArticleService {
 		dao.deleteArticle(theId);
 	}
 
+	@Override
+	public List<Article> searchArticles(String searchString) {
+		
+		return dao.searchArticles(searchString);
+	}
+
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -24,9 +25,19 @@
 	<c:url var="createLink" value="/article/showFormForAdd">
 		<c:param name="fromPage" value='${path}' />
 	</c:url>
+	
+	<!-- Add new Article buttonn -->
 	<input type="button" value="Add Article"
 		onclick="window.location.href='${createLink}'; return false;" />
 	<br>
+	
+	<!-- Add a search box -->
+	<form:form action="searchArticle" method="GET">
+		
+		<input type="text" name="searchString"/>
+		<input type="submit" value="Search">
+		
+	</form:form>
 
 	<h2>Five last articles</h2>
 	<hr>

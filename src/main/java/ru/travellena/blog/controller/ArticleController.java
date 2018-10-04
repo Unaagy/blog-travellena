@@ -2,6 +2,7 @@ package ru.travellena.blog.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -33,6 +34,11 @@ public class ArticleController {
 		theModel.addAttribute("articles", service.getFiveLastArticles());
 		theModel.addAttribute("path", getRequsetPath(request));
 
+		// *****************************************
+		System.out.println("===>>> Testing REFERER:");
+		System.out.println(getRequsetPath(request));
+		System.out.println(request.getHeader("Referer"));
+
 		return "app-main";
 	}
 
@@ -41,6 +47,11 @@ public class ArticleController {
 
 		theModel.addAttribute("articles", service.getAllArticles());
 		theModel.addAttribute("path", getRequsetPath(request));
+
+		// *****************************************
+		System.out.println("===>>> Testing REFERER:");
+		System.out.println(getRequsetPath(request));
+		System.out.println(request.getHeader("Referer"));
 
 		return "articles-list";
 	}
@@ -93,12 +104,17 @@ public class ArticleController {
 
 	@GetMapping("/showFormForUpdate")
 	public String showFormForUpdate(@RequestParam("articleId") long theId, @RequestParam("fromPage") String fromPage,
-			Model theModel) {
+			Model theModel, HttpServletRequest request) {
 
 		Article theArticle = service.getArticle(theId);
 
 		theModel.addAttribute("article", theArticle);
 		theModel.addAttribute("fromPage", fromPage);
+
+		// *****************************************
+		System.out.println("===>>> Testing REFERER:");
+		System.out.println(getRequsetPath(request));
+		System.out.println(request.getHeader("Referer"));
 
 		return "article-form";
 	}
@@ -124,10 +140,14 @@ public class ArticleController {
 		service.deleteArticle(theId);
 
 		String referer = request.getHeader("Referer");
-		System.out.println("===>>> Before: " + referer);
-		if (referer.contains("/showArticle"))
+
+		if (referer.contains("/showArticle") || referer.contains("/searchArticle"))
 			referer = "/";
-		System.out.println("===>>> Before: " + referer);
+
+		// *****************************************
+		System.out.println("===>>> Testing REFERER:");
+		System.out.println(getRequsetPath(request));
+		System.out.println(request.getHeader("Referer"));
 
 		return "redirect:" + referer;
 	}
@@ -142,7 +162,28 @@ public class ArticleController {
 		theModel.addAttribute("article", theArticle);
 		theModel.addAttribute("path", path);
 
+		// *****************************************
+		System.out.println("===>>> Testing REFERER:");
+		System.out.println(getRequsetPath(request));
+		System.out.println(request.getHeader("Referer"));
+
 		return "article-card";
+	}
+
+	@GetMapping("/searchArticle")
+	public String searchArticle(@RequestParam("searchString") String searchString, Model theModel,
+			HttpServletRequest request) {
+
+		List<Article> theArticles = service.searchArticles(searchString);
+		
+		// *****************************************
+		System.out.println("===>>> Testing REFERER:");
+		System.out.println(getRequsetPath(request));
+		System.out.println(request.getHeader("Referer"));
+		
+		theModel.addAttribute("articles", theArticles);
+
+		return "articles-list";
 	}
 
 	// *******

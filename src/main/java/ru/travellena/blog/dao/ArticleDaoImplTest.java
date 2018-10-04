@@ -170,20 +170,43 @@ public class ArticleDaoImplTest implements ArticleDao {
 		articles.remove(index);
 	}
 
+	@Override
+	public List<Article> searchArticles(String searchString) {
+
+		List<Article> searchedArticles;
+
+		if (searchString != null && searchString.trim().length() > 0) {
+			searchedArticles = new ArrayList<>();
+
+			for (Article a : articles) {
+				if (!a.isInfo() && a.isReadyToPublish() && (a.getTitle().toLowerCase().contains(searchString.toLowerCase())
+						|| a.getBody().toLowerCase().contains(searchString.toLowerCase()))) {
+					searchedArticles.add(a);
+				}
+			}
+
+		} else {
+			searchedArticles = getAllArticles();
+
+		}
+
+		return searchedArticles;
+	}
+
 	// *********************************************
 	// Help method to get list without info article and ready to be published
 	private long getMaxId() {
 		long max = 0;
-		
+
 		for (Article a : articles) {
 			if (a.getId() > max) {
 				max = a.getId();
 			}
 		}
-		
+
 		return max;
 	}
-	
+
 	private List<Article> getClearList(List<Article> articles) {
 
 		List<Article> returnList = new ArrayList<>();

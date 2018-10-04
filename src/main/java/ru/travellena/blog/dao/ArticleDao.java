@@ -26,5 +26,7 @@ public interface ArticleDao {
 
 	// Delete Article by article ID
 	public void deleteArticle(long theId);
+
+	public List<Article> searchArticles(String searchString);
 	
 }

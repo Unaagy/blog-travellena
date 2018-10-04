@@ -20,4 +20,6 @@ public interface ArticleService {
 
 	public void deleteArticle(long theId);
 
+	public List<Article> searchArticles(String searchString);
+
 }
