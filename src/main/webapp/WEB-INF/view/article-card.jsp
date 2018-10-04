@@ -15,8 +15,8 @@
 	<!-- create update link variable -->
 	<c:url var="updateLink" value="/article/showFormForUpdate">
 		<c:param name="articleId" value="${article.id}" />
-		<c:param name="fromPage" value="${path}" />
 	</c:url>
+
 	<!-- create delete link variable -->
 	<c:url var="deleteLink" value="/article/delete">
 		<c:param name="articleId" value="${article.id}" />

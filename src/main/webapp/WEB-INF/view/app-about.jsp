@@ -14,7 +14,6 @@
 	<!-- create update link variable -->
 	<c:url var="updateLink" value="/article/showFormForUpdate">
 		<c:param name="articleId" value="${infoArticle.id}" />
-		<c:param name="fromPage" value='${path}' />
 	</c:url>
 
 	<h2>${infoArticle.title}</h2>

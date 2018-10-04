@@ -117,11 +117,22 @@ public class ArticleDaoImplTest implements ArticleDao {
 		List<Article> drafts = new ArrayList<>();
 
 		for (Article a : articles) {
-			if (!a.isReadyToPublish() && !a.isInfo())
+			if (!a.isReadyToPublish() || (a.isInfo()))
 				drafts.add(a);
 		}
 
 		return drafts;
+	}
+	
+	// Get info article
+	public Article getInfoArticle() {
+
+		for (Article a : articles) {
+			if (a.isInfo() && a.isReadyToPublish())
+				return a;
+		}
+
+		return null;
 	}
 
 	@Override
@@ -217,17 +228,6 @@ public class ArticleDaoImplTest implements ArticleDao {
 		}
 
 		return returnList;
-	}
-
-	// Get info article
-	public Article getInfoArticle() {
-
-		for (Article a : articles) {
-			if (a.isInfo())
-				return a;
-		}
-
-		return null;
 	}
 
 	// Comparator

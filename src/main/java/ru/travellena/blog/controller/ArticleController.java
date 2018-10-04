@@ -29,56 +29,41 @@ public class ArticleController {
 	ArticleService service;
 
 	@GetMapping("/main")
-	public String showMain(Model theModel, HttpServletRequest request) {
+	public String showMain(Model theModel) {
 
 		theModel.addAttribute("articles", service.getFiveLastArticles());
-		theModel.addAttribute("path", getRequsetPath(request));
-
-		// *****************************************
-		System.out.println("===>>> Testing REFERER:");
-		System.out.println(getRequsetPath(request));
-		System.out.println(request.getHeader("Referer"));
 
 		return "app-main";
 	}
 
 	@GetMapping("/showList")
-	public String showList(Model theModel, HttpServletRequest request) {
+	public String showList(Model theModel) {
 
 		theModel.addAttribute("articles", service.getAllArticles());
-		theModel.addAttribute("path", getRequsetPath(request));
-
-		// *****************************************
-		System.out.println("===>>> Testing REFERER:");
-		System.out.println(getRequsetPath(request));
-		System.out.println(request.getHeader("Referer"));
 
 		return "articles-list";
 	}
 
 	@GetMapping("/showTableOfContext")
-	public String showTableOfContext(Model theModel, HttpServletRequest request) {
+	public String showTableOfContext(Model theModel) {
 
 		theModel.addAttribute("articles", service.getAllArticles());
-		theModel.addAttribute("path", getRequsetPath(request));
 
 		return "articles-table-of-context";
 	}
 
 	@GetMapping("/showDrafts")
-	public String showDrafts(Model theModel, HttpServletRequest request) {
+	public String showDrafts(Model theModel) {
 
 		theModel.addAttribute("drafts", service.getDrafts());
-		theModel.addAttribute("path", getRequsetPath(request));
 
 		return "articles-drafts";
 	}
 
 	@GetMapping("/showAbout")
-	public String showAbout(Model theModel, HttpServletRequest request) {
+	public String showAbout(Model theModel) {
 
 		theModel.addAttribute("infoArticle", service.getInfoArticle());
-		theModel.addAttribute("path", getRequsetPath(request));
 
 		return "app-about";
 	}
@@ -91,42 +76,36 @@ public class ArticleController {
 	}
 
 	@GetMapping("/showFormForAdd")
-	public String showFormForAdd(@RequestParam("fromPage") String fromPage, Model theModel) {
+	public String showFormForAdd(Model theModel, HttpServletRequest request) {
 
 		Article article = new Article();
 		article.setEventDate(new Date());
 
 		theModel.addAttribute("article", article);
-		theModel.addAttribute("fromPage", fromPage);
+		theModel.addAttribute("fromPage", request.getHeader("Referer"));
 
 		return "article-form";
 	}
 
 	@GetMapping("/showFormForUpdate")
-	public String showFormForUpdate(@RequestParam("articleId") long theId, @RequestParam("fromPage") String fromPage,
-			Model theModel, HttpServletRequest request) {
+	public String showFormForUpdate(@RequestParam("articleId") long theId, Model theModel, HttpServletRequest request) {
 
 		Article theArticle = service.getArticle(theId);
 
 		theModel.addAttribute("article", theArticle);
-		theModel.addAttribute("fromPage", fromPage);
-
-		// *****************************************
-		System.out.println("===>>> Testing REFERER:");
-		System.out.println(getRequsetPath(request));
-		System.out.println(request.getHeader("Referer"));
+		theModel.addAttribute("fromPage", request.getHeader("Referer"));
 
 		return "article-form";
 	}
 
 	@PostMapping("/saveArticle")
-	public String saveArticle(@ModelAttribute("article") Article theArticle,
-			@RequestParam("fromPage") String fromPage) {
+	public String saveArticle(@ModelAttribute("article") Article theArticle, @RequestParam("fromPage") String fromPage) {
 
 		if (theArticle.isReadyToPublish() && theArticle.getPublishDate() == null) {
 			theArticle.setPublishDate(new Date());
 		}
 
+		System.out.println("===>>> FromPage in SAVE " + fromPage);
 		System.out.println(theArticle);
 
 		service.saveArticle(theArticle);
@@ -143,11 +122,6 @@ public class ArticleController {
 
 		if (referer.contains("/showArticle") || referer.contains("/searchArticle"))
 			referer = "/";
-
-		// *****************************************
-		System.out.println("===>>> Testing REFERER:");
-		System.out.println(getRequsetPath(request));
-		System.out.println(request.getHeader("Referer"));
 
 		return "redirect:" + referer;
 	}
@@ -175,12 +149,12 @@ public class ArticleController {
 			HttpServletRequest request) {
 
 		List<Article> theArticles = service.searchArticles(searchString);
-		
+
 		// *****************************************
 		System.out.println("===>>> Testing REFERER:");
 		System.out.println(getRequsetPath(request));
 		System.out.println(request.getHeader("Referer"));
-		
+
 		theModel.addAttribute("articles", theArticles);
 
 		return "articles-list";

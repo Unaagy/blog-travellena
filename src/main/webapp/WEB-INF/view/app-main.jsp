@@ -20,15 +20,10 @@
 	<a href="${pageContext.request.contextPath}/article/showAbout">[About
 		us]</a>
 	<br>
-
-	<!-- create CREATE link variable -->
-	<c:url var="createLink" value="/article/showFormForAdd">
-		<c:param name="fromPage" value='${path}' />
-	</c:url>
 	
 	<!-- Add new Article buttonn -->
 	<input type="button" value="Add Article"
-		onclick="window.location.href='${createLink}'; return false;" />
+		onclick="window.location.href='showFormForAdd'; return false;" />
 	<br>
 	
 	<!-- Add a search box -->
@@ -48,7 +43,6 @@
 		<!-- create update link variable -->
 		<c:url var="updateLink" value="/article/showFormForUpdate">
 			<c:param name="articleId" value="${tempArticle.id}" />
-			<c:param name="fromPage" value='${path}' />
 		</c:url>
 
 		<!-- create delete link variable -->
