@@ -71,8 +71,9 @@
 				href="${deleteLink}"
 				onclick="if (!(confirm('Are you sure you want to delete this article?'))) return false">[Delete]</a>
 			<br> publish date: ${tempArticle.publishDate} <br> is ready
-			to publish: ${tempArticle.readyToPublish} <br>
-			<div class="size">${tempArticle.body}</div>
+			to publish: ${tempArticle.readyToPublish}
+		<p class="size">${tempArticle.body}</p>
+		<a href="${openArticle}">[читать полностью]</a>
 		<hr>
 
 	</c:forEach>

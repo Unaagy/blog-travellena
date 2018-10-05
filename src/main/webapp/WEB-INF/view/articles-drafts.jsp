@@ -5,10 +5,18 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
+
 <meta charset="UTF-8">
+
+<link href="${pageContext.request.contextPath}/resources/css/styles.css"
+	rel="stylesheet">
+
 <title>Travellena - Drafts</title>
+
 </head>
+
 <body>
 
 	<h2>Drafts</h2>
@@ -36,14 +44,12 @@
 			<a href="${openDraft}">${tempDraft.title}</a>
 		</h3>
 		<p>
-			<a href="${updateLink}">[Update]</a> 
-			<a href="${deleteLink}"
+			<a href="${updateLink}">[Update]</a> <a href="${deleteLink}"
 				onclick="if (!(confirm('Are you sure you want to delete this article?'))) return false">[Delete]</a>
-			<br>
-			<br>
-			published: ${tempDraft.publishDate}
-			<br> is ready to publish: ${tempDraft.readyToPublish} <br>
-			${tempDraft.body} <br>
+			<br> <br> published: ${tempDraft.publishDate} <br> is
+			ready to publish: ${tempDraft.readyToPublish}
+		<p class="size">${tempDraft.body}</p>
+		<a href="${openArticle}">[читать полностью]</a>
 		<hr>
 
 	</c:forEach>

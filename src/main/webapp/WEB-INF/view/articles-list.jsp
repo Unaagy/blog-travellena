@@ -5,10 +5,18 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
+
 <meta charset="UTF-8">
+
+<link href="${pageContext.request.contextPath}/resources/css/styles.css"
+	rel="stylesheet">
+
 <title>Travellena - All Articles</title>
+
 </head>
+
 <body>
 
 	<h2>Articles</h2>
@@ -35,15 +43,12 @@
 		<h3>
 			<a href="${openArticle}">${tempArticle.title}</a>
 		</h3>
-		<p><a href="${updateLink}">[Update]</a>
-		<a href="${deleteLink}"
-			onclick="if (!(confirm('Are you sure you want to delete this article?'))) return false">[Delete]</a>
-		<br>
-		<br>
-		published: ${tempArticle.publishDate}
-		<br>
-		${tempArticle.body}
-		<br>
+		<p>
+			<a href="${updateLink}">[Update]</a> <a href="${deleteLink}"
+				onclick="if (!(confirm('Are you sure you want to delete this article?'))) return false">[Delete]</a>
+			<br> <br> published: ${tempArticle.publishDate}
+		<p class="size">${tempArticle.body}</p>
+		<a href="${openArticle}">[читать полностью]</a>
 		<hr>
 
 	</c:forEach>

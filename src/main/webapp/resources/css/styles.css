@@ -1,11 +1,30 @@
 .size {
 	width: 100%;
-	height: 3.5em;
-	overflow: hidden; 			/* cut content */
-	padding: 5px; 				/* fields */
-	text-overflow: ellipsis; 	/* three dots */
+	height: 5em;
+	overflow: hidden; /* cut content */
+	padding: 5px; /* fields */
+	text-overflow: ellipsis; /* three dots */
+	background: FFFFFF; /* background color */
+	position: relative; /* relative positioning */
 }
 
-.size:hover {
-	background: #f0f0f0; 		/* background color */
+.size::after {
+	content: ''; /* output element */
+	position: absolute; /* relative positioning */
+	right: 0;
+	top: 0; /* element position */
+	width: 100%; /* gradient width */
+	height: 100%; /* gradient height */
+	
+	/* Gradient */
+	background: -moz-linear-gradient(up, rgba(255, 255, 255, 0.0), #FFFFFF
+		100%);
+	background: -webkit-linear-gradient(up, rgba(255, 255, 255, 0.0),
+		#FFFFFF 100%);
+	background: -o-linear-gradient(up, rgba(255, 255, 255, 0.0), #FFFFFF
+		100%);
+	background: -ms-linear-gradient(up, rgba(255, 255, 255, 0.0), #FFFFFF
+		100%);
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 0.0), #FFFFFF
+		100%);
 }
