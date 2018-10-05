@@ -6,10 +6,15 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
+
 <meta charset="UTF-8">
+
 <title>Travellena - ${article.id}</title>
+
 </head>
+
 <body>
 
 	<!-- create update link variable -->
@@ -30,4 +35,5 @@
 	<p>${article.body}</p>
 
 </body>
+
 </html>

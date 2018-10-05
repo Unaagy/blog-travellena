@@ -25,7 +25,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @ComponentScan("ru.travellena.blog")
 public class AppConfig implements WebMvcConfigurer {
 	// watch to:
-	/*
+	/* TODO
 	 * /home/tuchnyak/myProjects/training/UdemySpringAndHibernateForBeginners/
 	 * Security/spring-crm-rest-security/src/main/java/com/luv2code/springdemo/
 	 * config

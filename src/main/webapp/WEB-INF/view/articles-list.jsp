@@ -47,7 +47,7 @@
 			<a href="${updateLink}">[Update]</a> <a href="${deleteLink}"
 				onclick="if (!(confirm('Are you sure you want to delete this article?'))) return false">[Delete]</a>
 			<br> <br> published: ${tempArticle.publishDate}
-		<p class="size">${tempArticle.body}</p>
+		<div class="size">${tempArticle.body}</div>
 		<a href="${openArticle}">[читать полностью]</a>
 		<hr>
 

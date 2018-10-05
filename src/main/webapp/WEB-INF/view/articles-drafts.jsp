@@ -48,7 +48,7 @@
 				onclick="if (!(confirm('Are you sure you want to delete this article?'))) return false">[Delete]</a>
 			<br> <br> published: ${tempDraft.publishDate} <br> is
 			ready to publish: ${tempDraft.readyToPublish}
-		<p class="size">${tempDraft.body}</p>
+		<div class="size">${tempDraft.body}</div>
 		<a href="${openArticle}">[читать полностью]</a>
 		<hr>
 
