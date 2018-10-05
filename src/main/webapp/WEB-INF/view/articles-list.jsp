@@ -33,7 +33,7 @@
 		</c:url>
 
 		<h3>
-			<a href="${openArticle}">${tempArticle.title}, ${tempArticle.eventDate}</a>
+			<a href="${openArticle}">${tempArticle.title}</a>
 		</h3>
 		<p><a href="${updateLink}">[Update]</a>
 		<a href="${deleteLink}"

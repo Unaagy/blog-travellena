@@ -1,0 +1,11 @@
+.size {
+	width: 100%;
+	height: 3.5em;
+	overflow: hidden; 			/* cut content */
+	padding: 5px; 				/* fields */
+	text-overflow: ellipsis; 	/* three dots */
+}
+
+.size:hover {
+	background: #f0f0f0; 		/* background color */
+}

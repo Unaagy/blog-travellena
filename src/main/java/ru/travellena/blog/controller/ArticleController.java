@@ -124,7 +124,6 @@ public class ArticleController {
 	public String showFormForAdd(Model theModel, HttpServletRequest request) {
 
 		Article article = new Article();
-		article.setEventDate(new Date());
 
 		theModel.addAttribute("article", article);
 		theModel.addAttribute("fromPage", request.getHeader("Referer"));

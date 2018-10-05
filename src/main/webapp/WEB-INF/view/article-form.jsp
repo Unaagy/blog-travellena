@@ -25,10 +25,6 @@
 		<form:input path="title" />
 		<br>
 		
-		Event date:<br>
-		<form:input type="date" path="eventDate" />
-		<br>
-		
 		Cover image link:<br>
 		<form:input path="coverLink" value="http://" />
 		<br>

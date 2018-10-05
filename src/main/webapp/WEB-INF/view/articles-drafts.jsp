@@ -33,7 +33,7 @@
 		</c:url>
 
 		<h3>
-			<a href="${openDraft}">${tempDraft.title}, ${tempDraft.eventDate}</a>
+			<a href="${openDraft}">${tempDraft.title}</a>
 		</h3>
 		<p>
 			<a href="${updateLink}">[Update]</a> 

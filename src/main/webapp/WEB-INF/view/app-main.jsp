@@ -6,10 +6,18 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
+
 <meta charset="UTF-8">
+
+<link href="${pageContext.request.contextPath}/resources/css/styles.css"
+	rel="stylesheet">
+
 <title>Travellena</title>
+
 </head>
+
 <body>
 
 	<a href="${pageContext.request.contextPath}/article/showList">[All
@@ -20,18 +28,18 @@
 	<a href="${pageContext.request.contextPath}/article/showAbout">[About
 		us]</a>
 	<br>
-	
+
 	<!-- Add new Article buttonn -->
 	<input type="button" value="Add Article"
 		onclick="window.location.href='showFormForAdd'; return false;" />
 	<br>
-	
+
 	<!-- Add a search box -->
 	<form:form action="searchArticle" method="GET">
-		
-		<input type="text" name="searchString"/>
+
+		<input type="text" name="searchString" />
 		<input type="submit" value="Search">
-		
+
 	</form:form>
 
 	<h2>Five last articles</h2>
@@ -64,10 +72,11 @@
 				onclick="if (!(confirm('Are you sure you want to delete this article?'))) return false">[Delete]</a>
 			<br> publish date: ${tempArticle.publishDate} <br> is ready
 			to publish: ${tempArticle.readyToPublish} <br>
-			${tempArticle.body}
+			<div class="size">${tempArticle.body}</div>
 		<hr>
 
 	</c:forEach>
 
 </body>
+
 </html>

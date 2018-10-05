@@ -32,7 +32,7 @@
 			<c:param name="articleId" value="${tempArticle.id}"></c:param>
 		</c:url>
 	
-		<a href="${openArticle}">${tempArticle.title}, ${tempArticle.eventDate}</a>
+		<a href="${openArticle}">${tempArticle.title}</a>
 		<br>
 		published: ${tempArticle.publishDate}
 		<p><a href="${updateLink}">[Update]</a>
