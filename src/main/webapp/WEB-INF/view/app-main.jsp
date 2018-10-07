@@ -4,6 +4,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<!-- Tabs template connection -->
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -20,27 +23,7 @@
 
 <body>
 
-	<a href="${pageContext.request.contextPath}/article/showList">[All
-		articles]</a>
-	<a href="${pageContext.request.contextPath}/article/showTableOfContext">[Table
-		of context]</a>
-	<a href="${pageContext.request.contextPath}/article/showDrafts">[Drafts]</a>
-	<a href="${pageContext.request.contextPath}/article/showAbout">[About
-		us]</a>
-	<br>
-
-	<!-- Add new Article buttonn -->
-	<input type="button" value="Add Article"
-		onclick="window.location.href='showFormForAdd'; return false;" />
-	<br>
-
-	<!-- Add a search box -->
-	<form:form action="searchArticle" method="GET">
-
-		<input type="text" name="searchString" />
-		<input type="submit" value="Search">
-
-	</form:form>
+	<t:header />
 
 	<h2>Five last articles</h2>
 	<hr>
@@ -77,6 +60,8 @@
 		<hr>
 
 	</c:forEach>
+
+	<t:footer />
 
 </body>
 

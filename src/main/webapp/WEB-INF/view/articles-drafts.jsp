@@ -3,6 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
+<!-- Tabs template connection -->
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -18,6 +21,8 @@
 </head>
 
 <body>
+
+	<t:header />
 
 	<h2>Drafts</h2>
 	<hr>

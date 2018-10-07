@@ -3,6 +3,9 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<!-- Tabs template connection -->
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +13,8 @@
 <title>Travellena - About</title>
 </head>
 <body>
+
+	<t:header />
 
 	<!-- create update link variable -->
 	<c:url var="updateLink" value="/article/showFormForUpdate">
