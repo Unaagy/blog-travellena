@@ -18,27 +18,27 @@
 
 </head>
 
-<body>
+<t:page-template>
+	<jsp:body>
+			
+		<!-- create update link variable -->
+		<c:url var="updateLink" value="/article/showFormForUpdate">
+			<c:param name="articleId" value="${article.id}" />
+		</c:url>
 
-	<t:header />
+		<!-- create delete link variable -->
+		<c:url var="deleteLink" value="/article/delete">
+			<c:param name="articleId" value="${article.id}" />
+		</c:url>
 
-	<!-- create update link variable -->
-	<c:url var="updateLink" value="/article/showFormForUpdate">
-		<c:param name="articleId" value="${article.id}" />
-	</c:url>
-
-	<!-- create delete link variable -->
-	<c:url var="deleteLink" value="/article/delete">
-		<c:param name="articleId" value="${article.id}" />
-	</c:url>
-
-	<h2>${article.title}</h2>
-	<a href="${updateLink}">[Update]</a>
-	<a href="${deleteLink}"
-		onclick="if (!(confirm('Are you sure you want to delete this article?'))) return false">[Delete]</a>
-	<hr>
-	<p>${article.body}</p>
-
-</body>
+		<h2>${article.title}</h2>
+		<a href="${updateLink}">[Update]</a>
+		<a href="${deleteLink}"
+			onclick="if (!(confirm('Are you sure you want to delete this article?'))) return false">[Delete]</a>
+		<hr>
+		<p>${article.body}</p>
+			
+	</jsp:body>
+</t:page-template>
 
 </html>
