@@ -20,7 +20,7 @@
 				selector : '#TextEditor',
 				theme : "modern",
 				language : "ru",
-				plugins : "advlist,anchor,autolink,autoresize,autosave,charmap,code,codesample,colorpicker,contextmenu,directionality,emoticons,fullpage,fullscreen,help,hr,image,imagetools,importcss,insertdatetime,legacyoutput,link,lists,media,nonbreaking,noneditable,pagebreak,paste,preview,print,save,searchreplace,spellchecker,tabfocus,table,template,textcolor,textpattern,toc,visualblocks,visualchars,wordcount",
+				plugins : "advlist,anchor,autolink,autoresize,autosave,charmap,code,codesample,colorpicker,contextmenu,directionality,emoticons,fullpage,fullscreen,help,hr,image,imagetools,importcss,insertdatetime,legacyoutput,link,lists,media,nonbreaking,noneditable,pagebreak,paste,preview,print,save,searchreplace,tabfocus,table,template,textcolor,textpattern,toc,visualblocks,visualchars,wordcount",
 				
 				skin : "lightgray"
 			});

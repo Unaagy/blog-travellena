@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -14,18 +13,17 @@
 
 <meta charset="UTF-8">
 
-<link href="${pageContext.request.contextPath}/resources/css/styles.css"
-	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/styles.css" rel="stylesheet">
 
 <title>Travellena</title>
 
 </head>
 
-<body>
+<t:page-template>
 
-	<t:header />
-
-	<h2>Five last articles</h2>
+	<jsp:body>
+	
+		<h2>Five last articles</h2>
 	<hr>
 	<hr>
 
@@ -50,19 +48,21 @@
 			<a href="${openArticle}">${tempArticle.title}</a>
 		</h3>
 		<p>
-			id: ${tempArticle.id} <a href="${updateLink}">[Update]</a> <a
-				href="${deleteLink}"
-				onclick="if (!(confirm('Are you sure you want to delete this article?'))) return false">[Delete]</a>
-			<br> publish date: ${tempArticle.publishDate} <br> is ready
-			to publish: ${tempArticle.readyToPublish}
-		<div class="size">${tempArticle.body}</div>
+			id: ${tempArticle.id} <a href="${updateLink}">[Update]</a> <a href="${deleteLink}"
+					onclick="if (!(confirm('Are you sure you want to delete this article?'))) return false">[Delete]</a> <br> publish date:
+			${tempArticle.publishDate} <br> is ready to publish: ${tempArticle.readyToPublish}
+		
+			
+			
+			<div class="size">${tempArticle.body}</div>
 		<a href="${openArticle}">[читать полностью]</a>
 		<hr>
 
 	</c:forEach>
+	
+	</jsp:body>
 
-	<t:footer />
+</t:page-template>
 
-</body>
 
 </html>

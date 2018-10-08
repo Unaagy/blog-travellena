@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
@@ -13,18 +12,17 @@
 
 <meta charset="UTF-8">
 
-<link href="${pageContext.request.contextPath}/resources/css/styles.css"
-	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/styles.css" rel="stylesheet">
 
 <title>Travellena - All Articles</title>
 
 </head>
 
-<body>
+<t:page-template>
 
-	<t:header />
-
-	<h2>Articles</h2>
+	<jsp:body>
+	
+		<h2>Articles</h2>
 	<hr>
 	<hr>
 
@@ -50,13 +48,17 @@
 		</h3>
 		<p>
 			<a href="${updateLink}">[Update]</a> <a href="${deleteLink}"
-				onclick="if (!(confirm('Are you sure you want to delete this article?'))) return false">[Delete]</a>
+					onclick="if (!(confirm('Are you sure you want to delete this article?'))) return false">[Delete]</a>
 			<br> <br> published: ${tempArticle.publishDate}
-		<div class="size">${tempArticle.body}</div>
+		
+			<div class="size">${tempArticle.body}</div>
 		<a href="${openArticle}">[читать полностью]</a>
 		<hr>
 
 	</c:forEach>
+	
+	</jsp:body>
 
-</body>
+</t:page-template>
+
 </html>

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
@@ -12,11 +11,12 @@
 <meta charset="UTF-8">
 <title>Travellena - Table of Context</title>
 </head>
-<body>
 
-	<t:header />
+<t:page-template>
 
-	<h2>Table of context</h2>
+	<jsp:body>
+	
+		<h2>Table of context</h2>
 	<hr>
 	<hr>
 
@@ -41,11 +41,14 @@
 		<br>
 		published: ${tempArticle.publishDate}
 		<p>
-			<a href="${updateLink}">[Update]</a> <a href="${deleteLink}"
-				onclick="if (!(confirm('Are you sure you want to delete this article?'))) return false">[Delete]</a>
-		<hr>
+			<a href="${updateLink}">[Update]</a> 
+			<a href="${deleteLink}" onclick="if (!(confirm('Are you sure you want to delete this article?'))) return false">[Delete]</a>
+			<hr>
 
 	</c:forEach>
+	
+	</jsp:body>
 
-</body>
+</t:page-template>
+
 </html>
