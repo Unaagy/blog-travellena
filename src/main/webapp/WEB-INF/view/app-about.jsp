@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
 <!-- Tabs template connection -->
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
@@ -15,16 +16,19 @@
 <t:page-template>
 
 	<jsp:body>
-	
-		<!-- create update link variable -->
-	<c:url var="updateLink" value="/article/showFormForUpdate">
-		<c:param name="articleId" value="${infoArticle.id}" />
-	</c:url>
 
-	<h2>${infoArticle.title}</h2>
-	<hr>
-	<a href="${updateLink}">[Update]</a>
-	<br> ${infoArticle.body}
+		<h2>${infoArticle.title}</h2>
+		<hr>
+		<!--  Security content -->
+		<security:authorize access="hasRole('ADMIN')">
+			<!-- create update link variable -->
+			<c:url var="updateLink" value="/article/showFormForUpdate">
+				<c:param name="articleId" value="${infoArticle.id}" />
+			</c:url>
+			<a href="${updateLink}">[Update]</a>
+		</security:authorize>
+		
+		${infoArticle.body}
 	
 	</jsp:body>
 
