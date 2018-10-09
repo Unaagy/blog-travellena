@@ -1,5 +1,8 @@
 package ru.travellena.blog.config;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,16 +17,13 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 @EnableWebSecurity
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
+	@Autowired
+	private DataSource securityDataSource;
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		
-		// Organizing in-memory security
-		
-		UserBuilder users = User.withDefaultPasswordEncoder();
-		
-		auth.inMemoryAuthentication()
-			.withUser(users.username("master").password("qwe123").roles("ADMIN"))
-			.withUser(users.username("holder").password("qwe123").roles("ADMIN"));
+		auth.jdbcAuthentication().dataSource(securityDataSource);
 		
 	}
 

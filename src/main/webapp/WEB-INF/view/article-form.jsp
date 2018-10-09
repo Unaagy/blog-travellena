@@ -38,7 +38,6 @@
 
 		<form:hidden path="id" />
 		<form:hidden path="publishDate" />
-		<form:hidden path="author" />
 		<input type="hidden" name="fromPage" value='${fromPage}' />
 		
 		Title:<br>
