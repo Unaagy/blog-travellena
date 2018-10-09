@@ -52,7 +52,7 @@
 			<br> <br> published: ${tempDraft.publishDate} <br> is
 			ready to publish: ${tempDraft.readyToPublish}
 		
-			<div class="size">${tempDraft.body}</div>
+			<div class="trim">${tempDraft.body}</div>
 		<a href="${openDraft}">[читать полностью]</a>
 		<hr>
 

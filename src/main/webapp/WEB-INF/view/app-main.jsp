@@ -61,7 +61,7 @@
 							
 			publish date: ${tempArticle.publishDate}
 			
-			<div class="size">
+			<div class="trim">
 				${tempArticle.body}
 			</div>
 			
