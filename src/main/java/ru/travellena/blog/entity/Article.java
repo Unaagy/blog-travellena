@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 /**
@@ -30,7 +31,8 @@ public class Article {
 	@Column(name = "cover_link")
 	private String coverLink;
 	
-	@Column(name = "body")
+	@Lob
+	@Column(name = "body", columnDefinition="MEDIUMTEXT")
 	private String body;
 	
 	@Column(name = "publish_date")
