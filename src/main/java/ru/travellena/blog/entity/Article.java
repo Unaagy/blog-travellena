@@ -2,20 +2,44 @@ package ru.travellena.blog.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * Article entity
  * 
  * @author tuchnyak, https://github.com/Tuchnyak
  *
  */
+@Entity
+@Table(name = "articles")
 public class Article {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private long id;
+	
+	@Column(name = "title")
 	private String title;
+	
+	@Column(name = "cover_link")
 	private String coverLink;
+	
+	@Column(name = "body")
 	private String body;
+	
+	@Column(name = "publish_date")
 	private Date publishDate;
+	
+	@Column(name = "ready_to_publish")
 	private boolean readyToPublish;
+	
+	@Column(name = "info")
 	private boolean info;
 
 	// Constructors
