@@ -45,7 +45,7 @@
 		<br>
 		
 		Cover image link:<br>
-		<form:input path="coverLink" value="http://" />
+		<form:input path="coverLink" />
 		<br>
 		
 		Article content:<br>

@@ -41,6 +41,7 @@
 		</security:authorize>
 		
 		<hr>
+		<img src="${article.coverLink}" alt="${article.title} article cover image">
 		<p>${article.body}</p>
 			
 	</jsp:body>

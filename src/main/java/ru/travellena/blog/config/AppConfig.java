@@ -5,8 +5,6 @@ import java.util.Properties;
 import java.util.logging.Logger;
 
 import javax.sql.DataSource;
-import javax.transaction.TransactionManager;
-
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
