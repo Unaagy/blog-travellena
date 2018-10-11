@@ -1,16 +1,21 @@
 package ru.travellena.blog.config;
 
 import java.beans.PropertyVetoException;
+import java.util.Properties;
 import java.util.logging.Logger;
 
 import javax.sql.DataSource;
+import javax.transaction.TransactionManager;
 
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -32,7 +37,6 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 @EnableWebMvc
 @EnableTransactionManagement
 @ComponentScan("ru.travellena.blog")
-//@PropertySources({ @PropertySource("persistence-mysql.properties"), @PropertySource("jdbc-mysql.properties") })
 @PropertySource({ "classpath:persistence-mysql.properties", "classpath:jdbc-mysql.properties" })
 public class AppConfig implements WebMvcConfigurer {
 
@@ -58,6 +62,11 @@ public class AppConfig implements WebMvcConfigurer {
 		return viewResolver;
 	}
 
+	/**
+	 * Security data source bean
+	 * 
+	 * @return ComboPooledDataSource object
+	 */
 	@Bean
 	public DataSource securityDataSourse() {
 
@@ -82,6 +91,50 @@ public class AppConfig implements WebMvcConfigurer {
 		sds.setMaxIdleTime(Integer.parseInt(env.getProperty("connection.pool.maxIdleTime")));
 
 		return sds;
+	}
+
+	/*
+	 * Configuring Hibernate
+	 */
+	/**
+	 * 
+	 * @return hibernate properties from persistence configuration file
+	 */
+	private Properties getHibernateProperties() {
+
+		Properties props = new Properties();
+
+		props.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
+		props.setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
+
+		return props;
+	}
+
+	/**
+	 * Configures session factory
+	 * 
+	 * @return LocalSessionFactoryBean object
+	 */
+	@Bean
+	public LocalSessionFactoryBean sessionFactory() {
+
+		LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
+
+		sessionFactoryBean.setDataSource(securityDataSourse());
+		sessionFactoryBean.setPackagesToScan(env.getProperty("hibernate.packagesToScan"));
+		sessionFactoryBean.setHibernateProperties(getHibernateProperties());
+
+		return sessionFactoryBean;
+	}
+
+	@Bean
+	@Autowired
+	public HibernateTransactionManager TransactionManager(SessionFactory sessionFactory) {
+		
+		HibernateTransactionManager txManager = new HibernateTransactionManager();
+		txManager.setSessionFactory(sessionFactory);
+		
+		return txManager;
 	}
 
 	/**
