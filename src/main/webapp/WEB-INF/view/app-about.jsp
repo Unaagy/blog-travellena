@@ -18,16 +18,17 @@
 	<jsp:body>
 
 		<h2>${infoArticle.title}</h2>
-		<hr>
+		
 		<!--  Security content -->
 		<security:authorize access="hasRole('ADMIN')">
 			<!-- create update link variable -->
 			<c:url var="updateLink" value="/article/showFormForUpdate">
 				<c:param name="articleId" value="${infoArticle.id}" />
 			</c:url>
-			<a href="${updateLink}">[Update]</a>
+				<a href="${updateLink}">[Update]</a>
 		</security:authorize>
 		
+		<hr>
 		${infoArticle.body}
 	
 	</jsp:body>
