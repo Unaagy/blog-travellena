@@ -34,7 +34,7 @@
 				<tr>
 					<td>
 						<div align="center">
-							<img alt="${tempArticle.title} article image" src="${tempArticle.coverLink}" width=50% align="middle">
+							<img alt="${tempArticle.title} article image" src="${tempArticle.coverLink}" width=95% align="middle">
 						</div>
 					</td>
 					

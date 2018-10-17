@@ -40,8 +40,10 @@
 			<a href="${deleteLink}" onclick="if (!(confirm('Are you sure you want to delete this article?'))) return false">[Delete]</a>
 		</security:authorize>
 		
-		<hr>
+		<br>
 		<img src="${article.coverLink}" alt="${article.title} article cover image">
+		<hr>
+		
 		<p>${article.body}</p>
 			
 	</jsp:body>
