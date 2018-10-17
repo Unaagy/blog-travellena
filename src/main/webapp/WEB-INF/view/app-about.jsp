@@ -26,9 +26,11 @@
 				<c:param name="articleId" value="${infoArticle.id}" />
 			</c:url>
 				<a href="${updateLink}">[Update]</a>
+			<br>
 		</security:authorize>
-		
+		<img alt="${infoArticle.title} article image" src="${infoArticle.coverLink}" width=50% align="middle">
 		<hr>
+	
 		${infoArticle.body}
 	
 	</jsp:body>

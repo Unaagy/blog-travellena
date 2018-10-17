@@ -1,18 +1,14 @@
 package ru.travellena.blog.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -101,18 +97,6 @@ public class ArticleController {
 	}
 
 	/**
-	 * Handles date between jsp-pages and controllers
-	 * 
-	 * @param binder
-	 */
-	@InitBinder
-	public void dateInitBinder(WebDataBinder binder) {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-		sdf.setLenient(true);
-		binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
-	}
-
-	/**
 	 * Shows form to create new article
 	 * 
 	 * @param theModel - keeps new empty article and reference to a previous page
@@ -164,7 +148,7 @@ public class ArticleController {
 			@RequestParam("fromPage") String fromPage) {
 
 		if (theArticle.isReadyToPublish() && theArticle.getPublishDate() == null) {
-			theArticle.setPublishDate(new Date());
+			theArticle.setPublishDate(LocalDateTime.now());
 		}
 
 		System.out.println("===>>> FromPage in SAVE " + fromPage);
@@ -236,6 +220,7 @@ public class ArticleController {
 	/**
 	 * Deprecated method which gives last part of a http request from current page
 	 * For example: "/articles/main"
+	 * 
 	 * @param request - HttpServletRequest object
 	 * @return String path
 	 */

@@ -1,7 +1,6 @@
 package ru.travellena.blog.entity;
 
-import java.util.Date;
-
+import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,8 +34,9 @@ public class Article {
 	@Column(name = "body", columnDefinition="MEDIUMTEXT")
 	private String body;
 	
+	
 	@Column(name = "publish_date")
-	private Date publishDate;
+	private LocalDateTime publishDate;
 	
 	@Column(name = "ready_to_publish")
 	private boolean readyToPublish;
@@ -50,7 +50,7 @@ public class Article {
 	}
 
 	// full constructor
-	public Article(String title, String coverLink, String body, Date publishDate, boolean ReadyToPublish,
+	public Article(String title, String coverLink, String body, LocalDateTime publishDate, boolean ReadyToPublish,
 			boolean Info) {
 		this.title = title;
 		this.coverLink = coverLink;
@@ -61,7 +61,7 @@ public class Article {
 	}
 
 	// short constructor
-	public Article(String title, Date publishDate) {
+	public Article(String title, LocalDateTime publishDate) {
 		this.title = title;
 		this.publishDate = publishDate;
 	}
@@ -99,11 +99,11 @@ public class Article {
 		this.body = body;
 	}
 
-	public Date getPublishDate() {
+	public LocalDateTime getPublishDate() {
 		return publishDate;
 	}
 
-	public void setPublishDate(Date publishDate) {
+	public void setPublishDate(LocalDateTime publishDate) {
 		this.publishDate = publishDate;
 	}
 

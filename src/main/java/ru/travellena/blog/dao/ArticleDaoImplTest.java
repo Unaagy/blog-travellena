@@ -1,8 +1,8 @@
 package ru.travellena.blog.dao;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -25,7 +25,7 @@ public class ArticleDaoImplTest implements ArticleDao {
 	 */
 	private List<Article> articles;
 
-	/**
+	/**other
 	 * Initialization of the article list to test web-app
 	 */
 	@PostConstruct
@@ -84,12 +84,11 @@ public class ArticleDaoImplTest implements ArticleDao {
 		articles.add(a7);
 		articles.add(aInfo);
 
-		Date refDate = new Date();
 		int id = 1;
 		long timeDelta = 86400000;
 		for (Article a : articles) {
 			a.setId(id);
-			a.setPublishDate(new Date(refDate.getTime() - timeDelta));
+			a.setPublishDate(LocalDateTime.now());
 
 			id++;
 			timeDelta = timeDelta * 2;
@@ -264,9 +263,9 @@ public class ArticleDaoImplTest implements ArticleDao {
 		public int compare(Article o1, Article o2) {
 			int res = 0;
 
-			if (o1.getPublishDate().getTime() > o2.getPublishDate().getTime()) {
+			if (o1.getPublishDate().isAfter(o2.getPublishDate())) {
 				res = 1;
-			} else if (o1.getPublishDate().getTime() < o2.getPublishDate().getTime()) {
+			} else if (o1.getPublishDate().isBefore(o2.getPublishDate())) {
 				res = -1;
 			}
 
