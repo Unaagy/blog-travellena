@@ -4,6 +4,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
+<%@ taglib uri="http://sargue.net/jsptags/time" prefix="javatime" %>
+
 <!-- Tabs template connection -->
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 
@@ -31,7 +33,7 @@
 	
 			<a href="${openArticle}">${tempArticle.title}</a>
 			<br>
-			published: ${tempArticle.publishDate}
+			опубликовано: <javatime:format value="${tempArticle.publishDate}" style="MS" pattern="dd MMMM yyyy, HH:mm" />
 			
 			<!--  Security content -->
 			<security:authorize access="hasRole('ADMIN')">
