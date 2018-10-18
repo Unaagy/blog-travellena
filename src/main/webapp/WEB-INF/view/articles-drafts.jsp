@@ -2,8 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<%@ taglib uri="http://sargue.net/jsptags/time" prefix="javatime" %>
-
 <!-- Tabs template connection -->
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 
@@ -52,7 +50,7 @@
 			<a href="${updateLink}">[Update]</a> <a href="${deleteLink}"
 					onclick="if (!(confirm('Are you sure you want to delete this article?'))) return false">[Delete]</a>
 			<br><br>is ready to publish: ${tempDraft.readyToPublish}
-			<br> опубликовано: <javatime:format value="${tempDraft.publishDate}" style="MS" pattern="dd MMMM yyyy, HH:mm" />
+			<br> опубликовано: <t:time timeTag="${tempDraft.publishDate}" />
 		
 			<div class="trim">${tempDraft.body}</div>
 		<a href="${openDraft}">[читать полностью]</a>

@@ -4,8 +4,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
-<%@ taglib uri="http://sargue.net/jsptags/time" prefix="javatime" %>
-
 <!-- Tabs template connection -->
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 
@@ -70,7 +68,7 @@
 							
 						</security:authorize>
 										
-						опубликовано: <javatime:format value="${tempArticle.publishDate}" style="MS" pattern="dd MMMM yyyy, HH:mm" />
+						опубликовано: <t:time timeTag="${tempArticle.publishDate}" />
 						<div class="trim">
 							${tempArticle.body}
 						</div>
