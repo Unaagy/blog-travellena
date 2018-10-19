@@ -7,7 +7,7 @@
 This web-application allows an owner to perform CRUD-operations with articles. Access to admin's functions has provided by a login form.
 
 ---
-To operate with database you have to add jdbc connection using jdbc-mysql.properties file in the directory <b>`src/main/resources`</b>:
+To operate with database you have to add jdbc connection using <b><u>jdbc-mysql.properties</u></b> file in the directory <b>`src/main/resources`</b>:
 
 ```java
 #
