@@ -8,6 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 /**
  * Article entity
@@ -23,24 +26,26 @@ public class Article {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private long id;
-	
+
+	@NotNull(message = "*** Необходимо заполнить! ***")
+	@Size(min = 1, message = "*** Один символ минимум! ***")
 	@Column(name = "title")
 	private String title;
-	
+
+	@Pattern(regexp = "^(https?)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]", message = "*** Ссылка должна начинаться с \"http(s)://\" или быть пустой ***")
 	@Column(name = "cover_link")
 	private String coverLink;
-	
+
 	@Lob
-	@Column(name = "body", columnDefinition="MEDIUMTEXT")
+	@Column(name = "body", columnDefinition = "MEDIUMTEXT")
 	private String body;
-	
-	
+
 	@Column(name = "publish_date")
 	private LocalDateTime publishDate;
-	
+
 	@Column(name = "ready_to_publish")
 	private boolean readyToPublish;
-	
+
 	@Column(name = "info")
 	private boolean info;
 

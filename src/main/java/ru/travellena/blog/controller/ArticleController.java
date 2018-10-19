@@ -4,11 +4,16 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -136,6 +141,18 @@ public class ArticleController {
 	}
 
 	/**
+	 * initBinder to process strings from the input
+	 * @param dataBinder
+	 */
+	@InitBinder
+	public void initBinder(WebDataBinder dataBinder) {
+
+		StringTrimmerEditor ste = new StringTrimmerEditor(true);
+
+		dataBinder.registerCustomEditor(String.class, ste);
+	}
+
+	/**
 	 * Saves new or update existing article
 	 * 
 	 * @param theArticle - model attribute has been gotten from an article form
@@ -144,15 +161,17 @@ public class ArticleController {
 	 * @return '"redirect:" + fromPage' - redirection to a previous page
 	 */
 	@PostMapping("/saveArticle")
-	public String saveArticle(@ModelAttribute("article") Article theArticle,
-			@RequestParam("fromPage") String fromPage) {
+	public String saveArticle(@Valid @ModelAttribute("article") Article theArticle, BindingResult theBindingResult,
+			@RequestParam("fromPage") String fromPage, HttpServletRequest request) {
+		
+		if (theBindingResult.hasErrors()) {
+			request.setAttribute("fromPage", fromPage);
+			return "article-form";
+		}
 
 		if (theArticle.isReadyToPublish() && theArticle.getPublishDate() == null) {
 			theArticle.setPublishDate(LocalDateTime.now());
 		}
-
-		System.out.println("===>>> FromPage in SAVE " + fromPage);
-		System.out.println(theArticle);
 
 		service.saveArticle(theArticle);
 

@@ -1,6 +1,5 @@
 <%@page import="java.util.Enumeration"%>
-<%@ page language="java" contentType="text/html;charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
@@ -11,8 +10,13 @@
 
 <meta charset="UTF-8">
 
-<script
-	src='${pageContext.request.contextPath}/resources/editor/tinymce/js/tinymce/tinymce.min.js'></script>
+<style>
+.error {
+	color: red
+}
+</style>
+
+<script src='${pageContext.request.contextPath}/resources/editor/tinymce/js/tinymce/tinymce.min.js'></script>
 <script>
 	tinymce
 			.init({
@@ -21,7 +25,7 @@
 				theme : "modern",
 				language : "ru",
 				plugins : "advlist,anchor,autolink,autoresize,autosave,charmap,code,codesample,colorpicker,contextmenu,directionality,emoticons,fullpage,fullscreen,help,hr,image,imagetools,importcss,insertdatetime,legacyoutput,link,lists,media,nonbreaking,noneditable,pagebreak,paste,preview,print,save,searchreplace,tabfocus,table,template,textcolor,textpattern,toc,visualblocks,visualchars,wordcount",
-				
+
 				skin : "lightgray"
 			});
 </script>
@@ -42,10 +46,12 @@
 		
 		Title:<br>
 		<form:input path="title" />
+		<form:errors path="title" cssClass="error"/>
 		<br>
 		
 		Cover image link:<br>
 		<form:input path="coverLink" />
+		<form:errors path="coverLink" cssClass="error"/>
 		<br>
 		
 		Article content:<br>
