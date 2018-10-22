@@ -24,7 +24,7 @@
 
 	<jsp:body>
 	
-		<h2>Five last articles</h2>
+		<h2>Новые статьи</h2>
 		<hr>
 		<hr>
 	

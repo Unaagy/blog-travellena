@@ -42,7 +42,7 @@
 
 			<input type="text" name="searchString" />
 
-			<input type="submit" value="Search">
+			<input type="submit" value="Поиск по слову">
 		</form:form>
 	</div>
 

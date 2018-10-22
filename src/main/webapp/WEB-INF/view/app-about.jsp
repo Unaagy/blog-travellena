@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Travellena - About</title>
+<title>Travellena - Информация</title>
 </head>
 
 <t:page-template>
