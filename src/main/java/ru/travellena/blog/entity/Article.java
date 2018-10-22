@@ -28,15 +28,18 @@ public class Article {
 	private long id;
 
 	@NotNull(message = "*** Необходимо заполнить! ***")
-	@Size(min = 1, message = "*** Один символ минимум! ***")
+	@Size(max = 255, message = "*** Не более 255 символов! ***")
 	@Column(name = "title")
 	private String title;
 
+	@Lob
+	@Size(max = 2000, message = "*** Не более 2000 символов! ***")
 	@Pattern(regexp = "^(https?)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]", message = "*** Ссылка должна начинаться с \"http(s)://\" или быть пустой ***")
 	@Column(name = "cover_link")
 	private String coverLink;
 
 	@Lob
+	@Size(max = 16777200, message = "*** Не более 16 777 200 символов в статье вместе с тегами! ***")
 	@Column(name = "body", columnDefinition = "MEDIUMTEXT")
 	private String body;
 

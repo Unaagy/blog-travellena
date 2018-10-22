@@ -54,7 +54,7 @@
 		<form:errors path="coverLink" cssClass="error"/>
 		<br>
 		
-		Article content:<br>
+		Article content: <form:errors path="body" cssClass="error" /><br>
 		<form:textarea path="body" id="TextEditor" />
 		<br>
 
