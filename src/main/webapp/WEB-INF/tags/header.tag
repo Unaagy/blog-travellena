@@ -15,6 +15,20 @@
 		<img alt="main logo" src="${pageContext.request.contextPath}/resources/img/app-logo.png" align="middle">
 	</p>
 
+	<!-- Show menu block -->
+	<t:menu />
+
+	<!-- Search box -->
+	<div align="center">
+		<!-- Add a search box -->
+		<form:form action="searchArticle" method="GET">
+
+			<input type="text" name="searchString" />
+
+			<input type="submit" value="Поиск по слову">
+		</form:form>
+	</div>
+	
 	<!--  Security content -->
 	<security:authorize access="hasRole('ADMIN')">
 
@@ -31,19 +45,5 @@
 
 	</security:authorize>
 	<!--  /Security content -->
-
-	<!-- Show menu block -->
-	<t:menu />
-
-	<!-- Search box -->
-	<div align="center">
-		<!-- Add a search box -->
-		<form:form action="searchArticle" method="GET">
-
-			<input type="text" name="searchString" />
-
-			<input type="submit" value="Поиск по слову">
-		</form:form>
-	</div>
 
 </header>
