@@ -16,7 +16,7 @@
 
 <link href="${pageContext.request.contextPath}/resources/css/styles.css" rel="stylesheet">
 
-<title>Travellena - All Articles</title>
+<title>Travellena - Все статьи</title>
 
 </head>
 
@@ -24,7 +24,7 @@
 
 	<jsp:body>
 	
-		<h2>Articles</h2>
+		<h2>Все статьи</h2>
 		<hr>
 		<hr>
 	

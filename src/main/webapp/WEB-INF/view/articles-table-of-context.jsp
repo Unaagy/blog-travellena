@@ -18,7 +18,7 @@
 
 	<jsp:body>
 	
-		<h2>Table of context</h2>
+		<h2>Содержание</h2>
 		<hr>
 		<hr>
 	
