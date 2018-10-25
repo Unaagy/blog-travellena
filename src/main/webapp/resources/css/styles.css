@@ -27,3 +27,33 @@
 	background: linear-gradient(to bottom, rgba(255, 255, 255, 0.0), #FFFFFF
 		100%);
 }
+
+nav {
+	overflow: auto; /*как отображаются buttons за краями поля*/
+  	width: 100%;
+}
+
+nav ul {
+	list-style-type: none; /*отключаем маркеры списка*/
+	padding: 0;
+	margin: 0 auto; /*центрируем buttons*/
+	width: 47em; /*ценитрируем buttons*/
+}
+
+nav ul li {
+	float: left; /*обтекание справа*/
+	border-radius: 5px; /*скругление border*/
+	border: 1px solid olive; /*border for buttons*/
+	background: palegreen;
+	margin: 10px;
+}
+
+nav ul li a {
+	display: block; /*change type buttons*/
+	width:150%;
+	margin: 5px 10px;
+	padding: 0 20px;
+	font: italic 600 1.2em Time New Roman, serif;
+	color: darkblue;
+	
+}
