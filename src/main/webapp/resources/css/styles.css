@@ -28,6 +28,18 @@
 		100%);
 }
 
+header {
+	background-image: url('../img/logo.jpg')
+}
+
+header p {
+	
+}
+
+body {
+	font: 16px Comfortaa;
+}
+
 nav {
 	overflow: auto; /*как отображаются buttons за краями поля*/
   	width: 100%;
@@ -53,7 +65,7 @@ nav ul li a {
 	width:150%;
 	margin: 5px 10px;
 	padding: 0 20px;
-	font: italic 600 1.2em Time New Roman, serif;
+	/*font: italic 600 1.2em Time New Roman, serif;*/
 	color: darkblue;
 	
 }

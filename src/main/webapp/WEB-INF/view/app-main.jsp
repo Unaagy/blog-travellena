@@ -18,6 +18,9 @@
 
 <title>Travellena</title>
 
+	<!-- Подключаем шрифт Comfortaa -->
+	<link href="https://fonts.googleapis.com/css?family=Comfortaa&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
+	
 </head>
 
 <t:page-template>
