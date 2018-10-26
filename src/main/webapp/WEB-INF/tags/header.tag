@@ -6,44 +6,27 @@
 <!-- Tabs template connection -->
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 
-
-
 <header>
-
-	<!-- Main Logo -->
-	<p align="center">
-		<img alt="main logo" src="${pageContext.request.contextPath}/resources/img/app-logo.png" align="middle">
-	</p>
-
-	<!--  Security content -->
-	<security:authorize access="hasRole('ADMIN')">
-
-		<form:form action="${pageContext.request.contextPath}/logout" method="POST">
-			
-			User: <security:authentication property="principal.username" />
-			, has role(s): <security:authentication property="principal.authorities" />
-
-			<input type="submit" value="Logout">
-		</form:form>
-
-		<!-- Add new Article buttonn -->
-		<input align="center" type="button" value="Add Article" onclick="window.location.href='showFormForAdd'; return false;" />
-
-	</security:authorize>
-	<!--  /Security content -->
 
 	<!-- Show menu block -->
 	<t:menu />
 
-	<!-- Search box -->
-	<div align="center">
-		<!-- Add a search box -->
-		<form:form action="searchArticle" method="GET">
-
-			<input type="text" name="searchString" />
-
-			<input type="submit" value="Поиск по слову">
-		</form:form>
+	<!-- Main Logo with search -->
+	<div class="container-fluid bg-dark text-black-50 text-center"
+		style="background-image: url('${pageContext.request.contextPath}/resources/img/header-img.jpeg'); height: 666px; background-size: cover; background-attachment: scroll; position: relative; background-position: center center;">
+		<div class="row">
+			<div class="card-img-overlay d-flex flex-column justify-content-center text-black-50">
+				<h1 class="card-title display-2 font-weight-bold">Hello, Asia!</h1>
+				<p class="card-text font-weight-bold h3">downshifting</p>
+			</div>
+		</div>
+		<div class="card-img-overlay h-80 d-flex flex-column justify-content-end">
+			<!-- Add a search box -->
+			<form:form action="searchArticle" method="GET">
+				<input class="form-control-sm" type="text" name="searchString" />
+				<input class="btn btn-success btn-sm" type="submit" value="Поиск по слову">
+			</form:form>
+		</div>
 	</div>
 
 </header>
