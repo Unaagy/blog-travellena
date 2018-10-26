@@ -14,10 +14,14 @@
 	<t:menu />
 
 	<!-- Main Logo -->
-	<p align="center">
-		<img alt="main logo" src="${pageContext.request.contextPath}/resources/img/app-logo.png" align="middle">
-	</p>
-
+	<div class="card bg-dark text-white border-0 card text-center mx-auto">
+		<img class="card-img rounded-0" src="${pageContext.request.contextPath}/resources/img/header-img.jpeg" alt="Card image">
+		<div class="card-img-overlay h-100 d-flex flex-column justify-content-center">
+			<h1 class="card-title display-2 font-weight-bold">Hello, Asia!</h1>
+			<p class="card-text">downshifting</p>
+		</div>
+	</div>
+	
 	<!-- Search box -->
 	<div align="center">
 		<!-- Add a search box -->
@@ -28,22 +32,5 @@
 			<input type="submit" value="Поиск по слову">
 		</form:form>
 	</div>
-
-	<!--  Security content -->
-	<security:authorize access="hasRole('ADMIN')">
-
-		<form:form action="${pageContext.request.contextPath}/logout" method="POST">
-			
-			User: <security:authentication property="principal.username" />
-			, has role(s): <security:authentication property="principal.authorities" />
-
-			<input type="submit" value="Logout">
-		</form:form>
-
-		<!-- Add new Article buttonn -->
-		<input align="center" type="button" value="Add Article" onclick="window.location.href='showFormForAdd'; return false;" />
-
-	</security:authorize>
-	<!--  /Security content -->
 
 </header>
