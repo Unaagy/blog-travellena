@@ -4,7 +4,7 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
 
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark shadow p-3 mb-5">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark shadow p-3 mb-5" style="opacity: 0.8;">
 
 	<div class="container font-weight-bold">
 		<a class="navbar-brand" href="${pageContext.request.contextPath}/">Travellena</a>
