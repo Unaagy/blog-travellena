@@ -2,7 +2,7 @@
 	
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 	
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark shadow p-3 mb-5">
 	<div class="container font-weight-bold">
 		<a class="navbar-brand" href="${pageContext.request.contextPath}/">Travellena</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

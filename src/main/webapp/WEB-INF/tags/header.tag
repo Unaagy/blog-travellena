@@ -10,13 +10,13 @@
 
 <header>
 
+	<!-- Show menu block -->
+	<t:menu />
+
 	<!-- Main Logo -->
 	<p align="center">
 		<img alt="main logo" src="${pageContext.request.contextPath}/resources/img/app-logo.png" align="middle">
 	</p>
-
-	<!-- Show menu block -->
-	<t:menu />
 
 	<!-- Search box -->
 	<div align="center">
@@ -28,7 +28,7 @@
 			<input type="submit" value="Поиск по слову">
 		</form:form>
 	</div>
-	
+
 	<!--  Security content -->
 	<security:authorize access="hasRole('ADMIN')">
 
